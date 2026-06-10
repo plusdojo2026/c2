@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>がんばろうあいぼう | ホーム</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/aibou.css">
 </head>
@@ -34,10 +34,26 @@
 				<button type="submit">できた</button>
 				<button type="submit">できなかった</button>
 			</div>
-
 		</div>
 	</div>
+		<div class="image-home">
+			<img src="<%=request.getContextPath()%>/images/pet_cat_sit.png"
+				class="image-item">
+		</div>
 
+		<div class="home-menu">
+			<form action="MissionServlet" method="post">
+				<button type="submit">ミッション設定</button>
+			</form>
+
+			<form action="CalendarServlet" method="post">
+				<button type="submit">頑張りの確認</button>
+			</form>
+
+			<form action="CharacterServlet" method="post">
+				<button type="submit">キャラクター設定</button>
+			</form>
+		</div>
 
 	<script src="<%=request.getContextPath()%>/js/home.js"></script>
 </body>

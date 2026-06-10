@@ -12,7 +12,7 @@
 <button id="characterBtn" type="submit">キャラクターの変更</button>
 <button id="nameBtn" type="submit">呼び方の設定</button>
 </div>
-<div class="image-container">
+<div class="image-chara">
   <img src="<%=request.getContextPath()%>/images/dog_akitainu.png" class="image-item">
   <img src="<%=request.getContextPath()%>/images/pet_cat_sit.png" class="image-item">
 </div>
