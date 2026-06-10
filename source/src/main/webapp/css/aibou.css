@@ -1,0 +1,29 @@
+/* ログイン画面 */
+
+
+/* ホーム画面 */
+/*　レーダーチャート　*/
+.chart-and-text {
+  display: flex;
+  align-items: flex-start; /* 上揃え */
+  gap: 20px; /* チャートとテキストの間隔 */
+}
+
+/*　今日のミッション　*/
+.mission-area {
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  width: 400px;
+}
+.mission-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 120px; /* ボタンを縦3列に並べる */
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.mission-row p {
+  margin: 0;
+}
