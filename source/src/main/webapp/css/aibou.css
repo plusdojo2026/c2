@@ -1,6 +1,11 @@
 /* ログイン画面 */
 
 
+
+/* 新規登録画面 */
+
+
+
 /* ホーム画面 */
 /*　レーダーチャート　*/
 .chart-and-text {
@@ -27,3 +32,98 @@
 .mission-row p {
   margin: 0;
 }
+
+
+
+/*ミッション画面*/
+/* 背景の黒いオーバーレイ */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+/* ポップアップ本体 */
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* ×ボタン */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* タイトル */
+.popup-content h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+/* ミッション一覧 */
+#missionList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ミッションカード */
+#missionList p {
+    margin: 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 20px;
+    background: #f8f8f8;
+}
+
+/* 決定ボタン */
+#saveMissionBtn {
+    display: block;
+    margin: 30px auto 0;
+    width: 180px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+/* 頑張りの確認画面 */
+
+
+
+/* キャラクター設定画面 */
+
+
+
+/* キャラクター選択画面 */
+
+
+
+/* タイプ選択 */
+
+
+
+/* 名前の変更画面 */
