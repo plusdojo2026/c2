@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDAO {
 
@@ -12,13 +13,11 @@ public class UserDAO {
 			+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9";
 
 	private final String USER = "root";
-	private final String PASS = "password";
+	private final String PASS = "passward";
 
 	// ログイン判定
 	public boolean isLoginOK(String loginId, String pw) {
-
 		boolean result = false;
-
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -53,7 +52,8 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-<<<<<<< Updated upstream
+		return result;}
+
 		
 		//新規登録
 		public boolean insert(String login_id, String PW) {
@@ -67,10 +67,10 @@ public class UserDAO {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_aibou?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						"root", "passward");
 				
 				// SQL文を準備する
-				String sql = "INSERT INTO User VALUES (0, ?, ?, ?, ?, ?)";
+				String sql ="INSERT INTO user (login_id, PW) VALUES (?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				
 				// SQL文を完成させる
@@ -86,11 +86,6 @@ public class UserDAO {
 				} else {
 					pStmt.setString(2, "");
 				}
-				
-				pStmt.setString(3,"");
-				pStmt.setString(4,"");
-				pStmt.setString(5,"");
-			
 				
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
@@ -113,15 +108,7 @@ public class UserDAO {
 			}
 
 			// 結果を返す
-			return result;
-			}
-			
-
-		}
-=======
-
-		return result;
-	}
+			return result;}
 
 	// user_id取得
 	public int getUserId(String loginId) {
@@ -203,4 +190,3 @@ public class UserDAO {
 		return result;
 	}
 }
->>>>>>> Stashed changes
