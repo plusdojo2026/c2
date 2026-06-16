@@ -2,8 +2,17 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.CharaDAO;
+import dao.UserDAO;
+import model.Chara;
+import model.User;
 
 public class TypeServlet extends HttpServlet {
 	
@@ -15,24 +24,25 @@ public class TypeServlet extends HttpServlet {
 			response.sendRedirect("/webapp/LoginServlet");
 			return;
 		}
+		UserDAO uDAO = new UserDAO();
+		User user = uDAO.findByUserId(userId);
 
         // 現在のタイプ設定取得
-        TypeDAO tDao = new TypeDAO();
-        Type type = dao.findByUserId(user.getUserId());
+        CharaDAO cDao = new CharaDAO();
+        Chara chara = cDAO.findByTypeId(user.getTypeId());
 
         // 取得した情報をリクエストスコープに格納する
-        request.setAttribute("type", type);
+        request.setAttribute("type", chara.getTypeId);
 
         // タイプページへフォワードする
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher("/WEB-INF/jsp/type.jsp");
 
         dispatcher.forward(request, response);
-	}
-}
+		}
+	
 
-protected void doPost(HttpServletRequest request,
-        HttpServletResponse response)
+    protected void doPost(HttpServletRequest request,HttpServletResponse response)
         throws ServletException, IOException {
 	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
@@ -47,11 +57,11 @@ protected void doPost(HttpServletRequest request,
     String weatherType = request.getParameter("weatherType");
 
     // 更新処理
-    TypeDAO dao = new TypeDAO();
+    CharaDAO dao = new CharaDAO();
     dao.updateType(user.getUserId(), weatherType);
 
     // 設定画面へ戻る
-    response.sendRedirect(request.getContextPath()　+ "/CharacterServlet");
+    response.sendRedirect(request.getContextPath()+ "/CharacterServlet");
 	}
 }
 

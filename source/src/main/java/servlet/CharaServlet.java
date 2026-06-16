@@ -24,9 +24,9 @@ public class CharaServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				
-				Integer userId = (Integer) session.getAttribute("user_id");
+				Integer loginId = (Integer) session.getAttribute("login_id");
 				
-				if (session.getAttribute("user_id") == null) {
+				if (session.getAttribute("login_id") == null) {
 					response.sendRedirect("/webapp/LoginServlet");
 					return;
 				}
