@@ -30,13 +30,13 @@ public class CharacterChangeServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login_id") == null) {
-		response.sendRedirect("/webapp/LoginServlet");
+		response.sendRedirect("/c2/LoginServlet");
 		return;
 		}
 		
 		//キャラ変更画面へフォワードする
 		RequestDispatcher dispatcher =
-		request.getRequestDispatcher("/WEB-INF/jsp/charachange.jsp");
+		request.getRequestDispatcher("/charachange.jsp");
 		dispatcher.forward(request,response);
 		}
 
@@ -73,7 +73,7 @@ public class CharacterChangeServlet extends HttpServlet {
 				
 		//3 タイプ選択画面（typechange.jsp）へフォワードする
 			RequestDispatcher dispatcher =
-			request.getRequestDispatcher("/WEB-INF/jsp/typechange.jsp");
+			request.getRequestDispatcher("/typechange.jsp");
 			dispatcher.forward(request,response);
 			}
 		

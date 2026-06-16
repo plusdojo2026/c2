@@ -59,13 +59,12 @@ public class UserDAO {
 			// 結果を返す
 			return loginResult;
 		}
-
-		//キャラの変更(更新)
-		// 更新し、Chara_idを変更する
-		public boolean update(int chara_id,String user_id) {
+		
+		//新規登録
+		public boolean insert(String login_id, String PW) {
 			Connection conn = null;
 			boolean result = false;
-
+			
 			try {
 				// JDBCドライバを読み込む
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -74,25 +73,40 @@ public class UserDAO {
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_aibou?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 						"root", "password");
-
-				// SQL文を準備する
-				String sql = "UPDATE user SET chara_id=? WHERE user_id = ?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-
-				// SQL文を完成させる
-				pStmt.setInt(1,chara_id);
-				pStmt.setString(2,user_id);
 				
-
+				// SQL文を準備する
+				String sql = "INSERT INTO User VALUES (0, ?, ?, ?, ?, ?)";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				
+				// SQL文を完成させる
+				
+				if (login_id!= null) {
+					pStmt.setString(1, login_id);
+				} else {
+					pStmt.setString(1, "");
+				}
+				
+				if (PW!= null) {
+					pStmt.setString(2, PW);
+				} else {
+					pStmt.setString(2, "");
+				}
+				
+				pStmt.setString(3,"");
+				pStmt.setString(4,"");
+				pStmt.setString(5,"");
+			
+				
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} finally {
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} finally {
+					
 				// データベースを切断
 				if (conn != null) {
 					try {
@@ -104,4 +118,8 @@ public class UserDAO {
 			}
 
 			// 結果を返す
-			return result;}}
+			return result;
+			}
+			
+
+		}

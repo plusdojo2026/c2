@@ -32,7 +32,7 @@ import dao.UserDAO;
 			throws ServletException, IOException {
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher=
-		 request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		 request.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request,response);
 	}
 
@@ -58,14 +58,14 @@ import dao.UserDAO;
 			session.setAttribute("user_id",user_id);
 
 			// サーブレットにリダイレクトする
-			response.sendRedirect("/webapp/HomeServlet");
+			response.sendRedirect("/HomeServlet");
 			
 		} else { // ログイン失敗
 			request.setAttribute("loginError", true);
 			
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher=
-			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			request.getRequestDispatcher("/login.jsp");
 			dispatcher.forward(request,response);
 		}
 	}
