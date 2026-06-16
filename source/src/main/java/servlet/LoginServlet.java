@@ -1,7 +1,6 @@
-	//ログインサーブレット
-	package servlet;
+package servlet;
 
-	import java.io.IOException;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,52 +10,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.UserDAO;     
+import dao.UserDAO;
 
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 
-
-
-	/**
-	 	* Servlet implementation class LoginServlet
-	 */
-	@WebServlet("/LoginServlet")
-	public class LoginServlet extends HttpServlet {
-		private static final long serialVersionUID = 1L;
-       
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+<<<<<<< Updated upstream
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher=
 		 request.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request,response);
+=======
+
+		System.out.println("LoginServlet開始");
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+
+		dispatcher.forward(request, response);
+>>>>>>> Stashed changes
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//リクエストパラメータの文字コードを指定
-		request.setCharacterEncoding("UTF-8");
-		
-		//リクエストパラメータを取得
-		String user_id =request.getParameter("user_id");
-		String pw =request.getParameter("pw");
-		
-	
-	
-		// ログイン処理を行う
-		UserDAO iDao = new UserDAO();
-		if (iDao.isLoginOK(user_id, pw)) { // ログイン成功
-			// セッションスコープにIDを格納する
-			HttpSession session = request.getSession();
-			session.setAttribute("user_id",user_id);
 
+<<<<<<< Updated upstream
 			// サーブレットにリダイレクトする
 			response.sendRedirect("/HomeServlet");
 			
@@ -67,7 +50,47 @@ import dao.UserDAO;
 			RequestDispatcher dispatcher=
 			request.getRequestDispatcher("/login.jsp");
 			dispatcher.forward(request,response);
+=======
+		System.out.println("★★★★ doPost開始 ★★★★");
+
+		request.setCharacterEncoding("UTF-8");
+
+		String loginId = request.getParameter("user_id");
+
+		String pw = request.getParameter("pw");
+
+		System.out.println("loginId=" + loginId);
+		System.out.println("pw=" + pw);
+
+		UserDAO dao = new UserDAO();
+
+		boolean ok = dao.isLoginOK(loginId, pw);
+
+		System.out.println("isLoginOK=" + ok);
+
+		if (ok) {
+
+			System.out.println("ログイン成功");
+
+			int userId = dao.getUserId(loginId);
+
+			HttpSession session = request.getSession();
+
+			session.setAttribute("userId", userId);
+			session.setAttribute("loginId", loginId);
+
+			response.sendRedirect(request.getContextPath() + "/HomeServlet");
+
+		} else {
+
+			System.out.println("ログイン失敗");
+
+			request.setAttribute("loginError", true);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+
+			dispatcher.forward(request, response);
+>>>>>>> Stashed changes
 		}
 	}
-	}
-		
+}

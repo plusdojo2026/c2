@@ -4,61 +4,56 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
-
-
-//ログイン処理
 public class UserDAO {
-	// 引数で指定されたidpwでログイン成功ならtrueを返す
-		public boolean isLoginOK(String user_id, String pw) {
-			Connection conn = null;
-			boolean loginResult = false;
 
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("com.mysql.cj.jdbc.Driver");
+	private final String URL =
+			"jdbc:mysql://localhost:3306/test_aibou?"
+			+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9";
 
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_aibou;?"
-						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+	private final String USER = "root";
+	private final String PASS = "password";
 
-				// SELECT文を準備する
-				String sql = "SELECT count(*) FROM IdPw WHERE user_id=? AND pw=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, user_id);
-				pStmt.setString(2, pw);
+	// ログイン判定
+	public boolean isLoginOK(String loginId, String pw) {
 
-				// SELECT文を実行し、結果表を取得する
-				ResultSet rs = pStmt.executeQuery();
+		boolean result = false;
 
-				// ユーザーIDとが一致するユーザーがいれば結果をtrueにする
-				rs.next();
-				if (rs.getInt("count(*)") == 1) {
-					loginResult = true;
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-				loginResult = false;
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				loginResult = false;
-			} finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-						loginResult = false;
-					}
-				}
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection conn =
+					DriverManager.getConnection(
+							URL,
+							USER,
+							PASS);
+
+			String sql =
+					"SELECT COUNT(*) "
+					+ "FROM user "
+					+ "WHERE login_id = ? "
+					+ "AND PW = ?";
+
+			PreparedStatement ps =
+					conn.prepareStatement(sql);
+
+			ps.setString(1, loginId);
+			ps.setString(2, pw);
+
+			ResultSet rs =
+					ps.executeQuery();
+
+			if (rs.next()) {
+				result =
+						rs.getInt(1) == 1;
 			}
 
-			// 結果を返す
-			return loginResult;
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+<<<<<<< Updated upstream
 		
 		//新規登録
 		public boolean insert(String login_id, String PW) {
@@ -123,3 +118,89 @@ public class UserDAO {
 			
 
 		}
+=======
+
+		return result;
+	}
+
+	// user_id取得
+	public int getUserId(String loginId) {
+
+		int userId = 0;
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection conn =
+					DriverManager.getConnection(
+							URL,
+							USER,
+							PASS);
+
+			String sql =
+					"SELECT user_id "
+					+ "FROM user "
+					+ "WHERE login_id = ?";
+
+			PreparedStatement ps =
+					conn.prepareStatement(sql);
+
+			ps.setString(1, loginId);
+
+			ResultSet rs =
+					ps.executeQuery();
+
+			if (rs.next()) {
+				userId =
+						rs.getInt("user_id");
+			}
+
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return userId;
+	}
+
+	// キャラ変更
+	public boolean update(
+			int chara_id,
+			String user_id) {
+
+		boolean result = false;
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection conn =
+					DriverManager.getConnection(
+							URL,
+							USER,
+							PASS);
+
+			String sql =
+					"UPDATE user "
+					+ "SET chara_id = ? "
+					+ "WHERE user_id = ?";
+
+			PreparedStatement ps =
+					conn.prepareStatement(sql);
+
+			ps.setInt(1, chara_id);
+			ps.setString(2, user_id);
+
+			result =
+					ps.executeUpdate() > 0;
+
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+}
+>>>>>>> Stashed changes

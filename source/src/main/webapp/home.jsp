@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,43 +18,56 @@
 		<div class="mission-area">
 			<h1>今日のミッション</h1>
 
-			<div class="mission-row">
-				<p>洗濯をした</p>
-				<button type="submit">できた</button>
-				<button type="submit">できなかった</button>
-			</div>
+			<c:forEach var="mission" items="${missions}">
+				<c:if test="${mission != null}">
+					<div class="mission-row">
 
-			<div class="mission-row">
-				<p>ご飯を自分で作った</p>
-				<button type="submit">できた</button>
-				<button type="submit">できなかった</button>
-			</div>
+						<p>${mission}</p>
 
-			<div class="mission-row">
-				<p>早く寝れた</p>
-				<button type="submit">できた</button>
-				<button type="submit">できなかった</button>
-			</div>
+						<button type="button" class="complete-btn"
+							data-mission="${mission}" data-complete="1">できた</button>
+
+						<button type="button" class="complete-btn"
+							data-mission="${mission}" data-complete="0">できなかった</button>
+
+					</div>
+				</c:if>
+			</c:forEach>
 		</div>
 	</div>
-		<div class="image-home">
-			<img src="<%=request.getContextPath()%>/images/pet_cat_sit.png"
-				class="image-item">
-		</div>
+	<div class="image-home">
+		<img src="<%=request.getContextPath()%>/images/pet_cat_sit.png"
+			class="image-item">
+	</div>
 
-		<div class="home-menu">
-			<form action="MissionServlet" method="post">
-				<button type="submit">ミッション設定</button>
-			</form>
+	<div class="home-menu">
+		<form action="${pageContext.request.contextPath}/HomeMissionServlet"
+			method="post">
+			<button type="submit">ミッション設定</button>
+		</form>
 
-			<form action="CalendarServlet" method="post">
-				<button type="submit">頑張りの確認</button>
-			</form>
+		<form action="${pageContext.request.contextPath}/HomeDailyServlet"
+			method="post">
+			<button type="submit">頑張りの確認</button>
+		</form>
 
-			<form action="CharacterServlet" method="post">
-				<button type="submit">キャラクター設定</button>
-			</form>
-		</div>
+		<form action="${pageContext.request.contextPath}/HomeCharaServlet"
+			method="post">
+			<button type="submit">キャラクター設定</button>
+		</form>
+	</div>
+
+	<script>
+const radarData = [
+    ${radarData[0]},
+    ${radarData[1]},
+    ${radarData[2]},
+    ${radarData[3]},
+    ${radarData[4]}
+];
+
+console.log("JSP radarData=", radarData);
+</script>
 
 	<script src="<%=request.getContextPath()%>/js/home.js"></script>
 </body>
