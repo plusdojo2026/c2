@@ -44,6 +44,22 @@ public class HomeServlet extends HttpServlet {
         String[] missions =
                 dao.getTodayMissions(userId);
 
+        System.out.println("===== missions =====");
+
+        if(missions != null){
+            for(String m : missions){
+                System.out.println(m);
+            }
+        }else{
+            System.out.println("missions = null");
+        }
+
+        request.setAttribute(
+                "missions",
+                missions);
+        
+        
+
         request.setAttribute(
                 "missions",
                 missions);

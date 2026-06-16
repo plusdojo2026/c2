@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン</title>
+<title>がんばろうあいぼう | ログイン</title>
 </head>
 <body>
 

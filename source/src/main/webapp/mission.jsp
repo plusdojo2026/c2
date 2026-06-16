@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ミッション確認</title>
+<title>がんばろうあいぼう | ミッション設定</title>
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/aibou.css">

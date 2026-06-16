@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新規登録</title>
+<title>がんばろうあいぼう | 新規登録</title>
 </head>
 <body>
 

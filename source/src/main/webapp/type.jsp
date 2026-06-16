@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タイプ選択</title>
+<title>がんばろうあいぼう | タイプ選択</title>
 
 <style>
 body {

@@ -20,37 +20,18 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-<<<<<<< Updated upstream
-		// ログインページにフォワードする
-		RequestDispatcher dispatcher=
-		 request.getRequestDispatcher("/login.jsp");
-		dispatcher.forward(request,response);
-=======
 
 		System.out.println("LoginServlet開始");
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 
 		dispatcher.forward(request, response);
->>>>>>> Stashed changes
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-<<<<<<< Updated upstream
-			// サーブレットにリダイレクトする
-			response.sendRedirect("/HomeServlet");
-			
-		} else { // ログイン失敗
-			request.setAttribute("loginError", true);
-			
-			// 結果ページにフォワードする
-			RequestDispatcher dispatcher=
-			request.getRequestDispatcher("/login.jsp");
-			dispatcher.forward(request,response);
-=======
 		System.out.println("★★★★ doPost開始 ★★★★");
 
 		request.setCharacterEncoding("UTF-8");
@@ -90,7 +71,6 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 
 			dispatcher.forward(request, response);
->>>>>>> Stashed changes
 		}
 	}
 }

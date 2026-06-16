@@ -4,12 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>がんばろうあいぼう | キャラクター選択</title>
 </head>
 <body>
-	<img src="<%=request.getContextPath()%>/images/dog_akitainu.png"
-		class="image-item">
-	<img src="<%=request.getContextPath()%>/images/pet_cat_sit.png"
-		class="image-item">
+	
+    <button type="submit" name="charaId" value="1">
+        <img src="<%=request.getContextPath()%>/images/dog_akitainu.png"
+             width="200">
+    </button>
+
+    <button type="submit" name="charaId" value="2">
+        <img src="<%=request.getContextPath()%>/images/pet_cat_sit.png"
+             width="200">
+    </button>
+
 </body>
 </html>
