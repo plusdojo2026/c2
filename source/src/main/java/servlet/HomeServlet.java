@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet {
                 (Integer) session.getAttribute(
                         "userId");
 
-        if (userId == null) {
+        if (userId == null) { 
 
             response.sendRedirect(
                     request.getContextPath()

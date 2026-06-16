@@ -29,5 +29,5 @@ public class CharaTransitionServlet extends HttpServlet {
         dispatcher.forward(
                 request,
                 response);
-    }
-}
+    }  
+} 

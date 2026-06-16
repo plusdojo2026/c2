@@ -29,5 +29,5 @@ public class NameTransitionServlet extends HttpServlet {
         dispatcher.forward(
                 request,
                 response);
-    }
+    } 
 }

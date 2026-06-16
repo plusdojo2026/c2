@@ -28,7 +28,7 @@ public class MissionChangeServlet extends HttpServlet {
         if (missionData == null ||
                 missionData.isEmpty()) {
 
-            System.out.println("missionDataが空です");
+            System.out.println("missionDataが空です"); 
 
             response.sendRedirect(
                     request.getContextPath()
