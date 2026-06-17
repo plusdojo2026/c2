@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>がんばろうあいぼう | ホーム</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/aibou.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css">
 </head>
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -18,16 +17,18 @@
 		<div class="mission-area">
 			<h1>今日のミッション</h1>
 
-			<c:forEach var="mission" items="${missions}">
+			<c:forEach var="mission" items="${missions}" varStatus="st">
 				<c:if test="${mission != null}">
 					<div class="mission-row">
 
 						<p>${mission}</p>
 
-						<button type="button" class="complete-btn"
+						<button type="button"
+							class="complete-btn ${completes[st.index] == 1 ? 'active' : ''}"
 							data-mission="${mission}" data-complete="1">できた</button>
 
-						<button type="button" class="complete-btn"
+						<button type="button"
+							class="complete-btn ${completes[st.index] == 0 ? 'active' : ''}"
 							data-mission="${mission}" data-complete="0">できなかった</button>
 
 					</div>
@@ -35,27 +36,60 @@
 			</c:forEach>
 		</div>
 	</div>
-	<div class="image-home">
-		<img src="<%=request.getContextPath()%>/images/pet_cat_sit.png"
+
+	<div class="character-area">
+
+		<img src="<%=request.getContextPath()%>/images/${charaImage}"
 			class="image-item">
+
+		<div class="right-area">
+
+			<div class="home-menu">
+
+				<div class="menu-top">
+					<form
+						action="${pageContext.request.contextPath}/HomeMissionServlet"
+						method="post">
+
+						<button type="submit" class="image-button">
+							<img src="<%=request.getContextPath()%>/images/mission.png"
+								alt="ミッション設定">
+						</button>
+
+					</form>
+				</div>
+
+				<div class="menu-bottom">
+					<form action="${pageContext.request.contextPath}/HomeDailyServlet"
+						method="post">
+
+						<button type="submit" class="image-button">
+							<img src="<%=request.getContextPath()%>/images/calendar.png"
+								alt="頑張りの確認">
+						</button>
+
+					</form>
+
+					<form action="${pageContext.request.contextPath}/HomeCharaServlet"
+						method="post">
+
+						<button type="submit" class="image-button">
+							<img src="<%=request.getContextPath()%>/images/character.png"
+								alt="キャラクター設定">
+						</button>
+
+					</form>
+				</div>
+
+			</div>
+
+			<div class="chara-message">${charaMessage}</div>
+
+		</div>
+
 	</div>
 
-	<div class="home-menu">
-		<form action="${pageContext.request.contextPath}/HomeMissionServlet"
-			method="post">
-			<button type="submit">ミッション設定</button>
-		</form>
 
-		<form action="${pageContext.request.contextPath}/HomeDailyServlet"
-			method="post">
-			<button type="submit">頑張りの確認</button>
-		</form>
-
-		<form action="${pageContext.request.contextPath}/HomeCharaServlet"
-			method="post">
-			<button type="submit">キャラクター設定</button>
-		</form>
-	</div>
 
 	<script>
 const radarData = [

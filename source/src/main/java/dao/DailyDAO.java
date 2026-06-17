@@ -101,4 +101,61 @@ public class DailyDAO {
 		return missions;
 	}
 
+	// 今日の達成状況取得
+	public int[] getTodayCompletes(int userId) {
+
+		int[] completes = {-1, -1, -1};
+
+		String sql = "SELECT complete " + "FROM daily_mission " + "WHERE user_id = ? " + "AND daily = CURDATE()";
+
+		try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+
+				PreparedStatement ps = con.prepareStatement(sql)) {
+
+			ps.setInt(1, userId);
+
+			ResultSet rs = ps.executeQuery();
+
+			int i = 0;
+
+			while (rs.next() && i < 3) {
+
+				completes[i] = rs.getInt("complete");
+
+				i++;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return completes;
+	}
+
+	// 今日達成したミッション数取得
+	public int getTodayCompleteCount(int userId) {
+
+		int count = 0;
+
+		String sql = "SELECT COUNT(*) " + "FROM daily_mission " + "WHERE user_id = ? " + "AND daily = CURDATE() "
+				+ "AND complete = 1";
+
+		try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+
+				PreparedStatement ps = con.prepareStatement(sql)) {
+
+			ps.setInt(1, userId);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return count;
+	}
 }

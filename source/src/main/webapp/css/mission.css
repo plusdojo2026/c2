@@ -1,47 +1,3 @@
-/* ログイン画面 */
-
-
-
-/* 新規登録画面 */
-
-
-
-/* ホーム画面 */
-/*　レーダーチャート　*/
-.chart-and-text {
-  display: flex;
-  align-items: flex-start; /* 上揃え */
-  gap: 20px; /* チャートとテキストの間隔 */
-}
-
-/*　今日のミッション　*/
-.mission-area {
-  border: 2px solid #ccc;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  width: 400px;
-}
-.mission-row {
-  display: grid;
-  grid-template-columns: 1fr 80px 120px; /* ボタンを縦3列に並べる */
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-.mission-row p {
-  margin: 0;
-}
-button.active {
-  background-color: #007bff;
-  color: white;
-  box-shadow: 0 0 8px #4da3ff;
-}
-
-
-
-
-
 /*ミッション画面*/
 /* 背景の黒いオーバーレイ */
 .popup {
@@ -114,23 +70,3 @@ button.active {
     font-size: 20px;
     cursor: pointer;
 }
-
-
-
-/* 頑張りの確認画面 */
-
-
-
-/* キャラクター設定画面 */
-
-
-
-/* キャラクター選択画面 */
-
-
-
-/* タイプ選択 */
-
-
-
-/* 名前の変更画面 */

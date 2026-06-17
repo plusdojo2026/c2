@@ -7,7 +7,7 @@
 <title>がんばろうあいぼう | ミッション設定</title>
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/aibou.css">
+	href="${pageContext.request.contextPath}/css/mission.css">
 
 </head>
 <body>

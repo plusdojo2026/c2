@@ -1,0 +1,141 @@
+/* ホーム画面 */
+/*　レーダーチャート　*/
+.chart-and-text {
+  display: flex;
+  align-items: flex-start; /* 上揃え */
+  gap: 20px; /* チャートとテキストの間隔 */
+}
+
+/*　今日のミッション　*/
+.mission-area {
+  border: 2px solid #ccc;
+  padding: 40px;
+  border-radius: 8px;
+  background-color: #e0eff5;
+  width: 900px;
+}
+.mission-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 120px; /* ボタンを縦3列に並べる */
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.mission-row p {
+  margin: 0;
+  font-size:24px
+}
+button.active {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 0 8px #4da3ff;
+}
+
+.image-item{
+    width: 400px;
+    height: auto;
+    margin-top: -30px;
+}
+
+/* 各画面遷移ボタン */
+.home-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-left: 150px;
+    margin-top: -80px;
+}
+.menu-top{
+    display: flex;
+    justify-content: center;
+}
+.menu-bottom{
+    display: flex;
+    gap: 40px;
+}
+
+/* ボタン */
+.image-button{
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.image-button img{
+    width: 320px;
+    height: auto;
+
+    transition: transform 0.2s ease;
+}
+
+.image-button:hover img{
+    transform: scale(1.05);
+}
+
+.image-button:active img{
+    transform: scale(0.98);
+}
+
+/* マウスを乗せた時 */
+.home-menu button:hover{
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+/* 押した時 */
+.home-menu button:active{
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.character-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.right-area{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* コメント部分 */
+.chara-message{
+    position: relative;
+    width: 780px;
+    padding: 60px 30px;
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+}
+/* コメント黒い枠部分 */
+.chara-message::after{
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 12px 18px 12px 0;
+    border-style: solid;
+    border-color: transparent #333 transparent transparent;
+}
+
+/* コメント白い内側部分 */
+.chara-message::before{
+    content: "";
+    position: absolute;
+    left: -13px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 9px 14px 9px 0;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+    z-index: 1;
+}
