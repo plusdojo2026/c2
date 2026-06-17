@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.NameDAO;
-import dto.User;
+import dto.UserDto;
 
 
 /**
@@ -33,11 +32,21 @@ public class NameServlet extends HttpServlet{
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login_id") == null) {
-			response.sendRedirect("/webapp/LoginServlet");
+			response.sendRedirect(request.getContextPath() +"/LoginServlet");
 			return;
 		}
+		
+		//ログイン中のユーザIDを取得
+		int userId=(Integer)session.getAttribute("userId");	
+		
+		//DBから現在の呼び名を取得する
+		NameDAO nDao=new NameDAO();
+		UserDto user=nDao.selectByUserId(userId);
+		
+		request.setAttribute("user", user);
+		
 		// キャラとユーザの呼び方を登録できるページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/name.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/name.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -51,7 +60,7 @@ public class NameServlet extends HttpServlet{
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login_id") == null) {
-			response.sendRedirect("/webapp/LoginServlet");
+			response.sendRedirect(request.getContextPath() +"/LoginServlet");
 			return;
 		}
 		
@@ -66,20 +75,23 @@ public class NameServlet extends HttpServlet{
 		
 		// 更新処理を行う
 		NameDAO nDao = new NameDAO();
+		boolean isSuccess = nDao.update(new UserDto(userId, userNickname, charaNickname));
 		
-		 String action = request.getParameter("regist");
 		 
-	if ("登録".equals(action)) {
-		if (nDao.update(new User(userId,userNickname,charaNickname))) { // 登録成功
-			request.setAttribute("result", new Result("登録成功！","呼び名を更新しました。", "/webapp/NameServlet"));
-		} else { // 登録失敗
-		request.setAttribute("result", new Result("登録失敗！", "呼び名を登録できませんでした。", "/webapp/NameServlet"));
+		String message;
+		
+		if(isSuccess) {
+			message="呼び名を更新しました。";
+		}else {
+			message="呼び名を更新できませんでした。";
 		}
-	}			
-
+		
+		request.setAttribute("message",message);
+		
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/name.jsp");
 		dispatcher.forward(request, response);
 	}
 }
+
 

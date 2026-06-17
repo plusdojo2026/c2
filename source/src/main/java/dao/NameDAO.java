@@ -3,13 +3,14 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.User; 
+import dto.UserDto; 
 
 public class NameDAO {
 	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-		public boolean update(User user) {
+		public boolean update(UserDto user) {
 			Connection conn = null;
 			boolean result = false;
 
@@ -53,5 +54,45 @@ public class NameDAO {
 			// 結果を返す
 			return result;
 		}
+		
+		//現在の呼び名を表示する。
+		public UserDto selectByUserId(int userId) {
+		    Connection conn = null;
+		    UserDto user = null;
 
+		    try {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+
+		        conn = DriverManager.getConnection(
+		            "jdbc:mysql://localhost:3306/test_aibou?"
+		            + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+		            "root", "password");
+
+		        String sql = "SELECT user_nickname, chara_nickname FROM User WHERE user_id = ?";
+		        PreparedStatement ps = conn.prepareStatement(sql);
+		        ps.setInt(1, userId);
+
+		        ResultSet rs = ps.executeQuery();
+
+		        if (rs.next()) {
+		            String userNickname = rs.getString("user_nickname");
+		            String charaNickname = rs.getString("chara_nickname");
+
+		            user = new UserDto(userId, userNickname, charaNickname);
+		        }
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        if (conn != null) {
+		            try { 
+		            	conn.close(); 
+		            	} catch (SQLException e) {
+		            	e.printStackTrace(); 
+		            	}
+		        }
+		    }
+
+		    return user;
+		}
 }
