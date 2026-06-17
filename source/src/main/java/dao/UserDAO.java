@@ -77,8 +77,18 @@ public class UserDAO {
 			PreparedStatement ps =
 					conn.prepareStatement(sql);
 
-			ps.setString(1, loginId);
-			ps.setString(2, pw);
+			if (loginId != null) {
+				ps.setString(1, loginId);
+			} else {
+				ps.setString(1, "");
+			}
+
+			if (pw != null) {
+				ps.setString(2, pw);
+			} else {
+				ps.setString(2, "");
+			}
+
 
 			result = ps.executeUpdate() > 0;
 
