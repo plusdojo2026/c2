@@ -255,4 +255,16 @@ public class UserDAO {
 
 		return typeId;
 	}
+	
+	public User findByUserId(int userId) {
+		
+		Connection conn = null;
+		User user = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			String sql = "SELECT * FROM user WHERE user_id=?"
+		}
+	}
 }

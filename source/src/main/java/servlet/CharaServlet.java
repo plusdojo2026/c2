@@ -22,14 +22,13 @@ public class CharaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,HttpServletResponse response)
 	throws ServletException,IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-				HttpSession session = request.getSession();
-				
-				Integer loginId = (Integer) session.getAttribute("login_id");
-				
-				if (session.getAttribute("login_id") == null) {
-					response.sendRedirect("/webapp/LoginServlet");
-					return;
-				}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_id") == null) {
+			response.sendRedirect("/webapp/LoginServlet");
+			return;
+		}
+		Integer userId = (Integer)session.getAttribute("user_id");
+		
 		UserDAO uDAO = new UserDAO();
 		User user = uDAO.findByUserId(userId);
 		
