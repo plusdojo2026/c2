@@ -24,7 +24,7 @@ public class NameTransitionServlet extends HttpServlet {
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(
-                        "/name.jsp");
+                        "/WEB-INF/jsp/name.jsp");
 
         dispatcher.forward(
                 request,

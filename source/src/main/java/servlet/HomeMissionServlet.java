@@ -24,7 +24,7 @@ public class HomeMissionServlet extends HttpServlet {
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(
-                        "/mission.jsp");
+                        "/WEB-INF/jsp/mission.jsp");
 
         dispatcher.forward(
                 request,

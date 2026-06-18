@@ -24,7 +24,7 @@ public class HomeDailyServlet extends HttpServlet {
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(
-                        "/calendar.jsp");
+                        "/jsp/calendar.jsp");
 
         dispatcher.forward(
                 request,

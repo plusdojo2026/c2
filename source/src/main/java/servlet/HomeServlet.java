@@ -56,7 +56,10 @@ public class HomeServlet extends HttpServlet {
         // キャラ取得
         UserDAO userDao = new UserDAO();
         int charaId = userDao.getCharaId(userId);
-        int typeId = userDao.getTypeId(userId);
+        int typeId = userDao.getTypeId(charaId);
+
+        System.out.println("charaId=" + charaId);
+        System.out.println("typeId=" + typeId);
 
         request.setAttribute("charaId", charaId);
         request.setAttribute("typeId", typeId);
@@ -69,6 +72,7 @@ public class HomeServlet extends HttpServlet {
         switch (charaId) {
 
         case 1:
+        case 3:
 
             charaImage = "dog.png";
 
@@ -89,6 +93,7 @@ public class HomeServlet extends HttpServlet {
             break;
 
         case 2:
+        case 4:
 
             charaImage = "cat.png";
 
@@ -290,6 +295,6 @@ public class HomeServlet extends HttpServlet {
 
         request.setAttribute("radarData", radarData);
 
-        request.getRequestDispatcher("/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request, response);
     }
 }

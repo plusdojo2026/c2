@@ -24,7 +24,7 @@ public class HomeCharaServlet extends HttpServlet {
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(
-                        "/character.jsp");
+                        "/WEB-INF/jsp/character.jsp");
 
         dispatcher.forward(
                 request,

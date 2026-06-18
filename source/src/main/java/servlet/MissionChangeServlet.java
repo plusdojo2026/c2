@@ -32,7 +32,7 @@ public class MissionChangeServlet extends HttpServlet {
 
             response.sendRedirect(
                     request.getContextPath()
-                    + "/home.jsp");
+                    + "/WEB-INF/jsp/home.jsp");
 
             return;
         }

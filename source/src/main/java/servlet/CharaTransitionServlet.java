@@ -24,7 +24,7 @@ public class CharaTransitionServlet extends HttpServlet {
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher(
-                        "/charachange.jsp");
+                        "/WEB-INF/jsp/charachange.jsp");
 
         dispatcher.forward(
                 request,
