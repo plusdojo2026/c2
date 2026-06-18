@@ -23,9 +23,10 @@ public class LoginServlet extends HttpServlet {
 
 		System.out.println("LoginServlet開始");
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+		RequestDispatcher dispatcher =
+			    request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 
-		dispatcher.forward(request, response);
+			dispatcher.forward(request, response);
 	}
 
 	@Override

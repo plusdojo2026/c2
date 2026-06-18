@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,26 +10,31 @@
 </head>
 <body>
 	<div class="loginsize">
-	 <p class="top"><b>ログイン</b></p>
-	 
-	<form action="${pageContext.request.contextPath}/LoginServlet"
-		method="post">
-
-		<p>
-			<label for="id">ユーザID</label><br> <input type="text" id="id" name="id">
+		<p class="top">
+			<b>ログイン</b>
 		</p>
 
-		<p>
-			<label for="pw">パスワード</label><br> <input type="password" id="pw" name="pw">
-		</p>
+		<form action="${pageContext.request.contextPath}/LoginServlet"
+			method="post">
 
-		<button type="submit" class="submit">ログイン</button>
+			<p>
+				<label for="id">ユーザID</label><br> <input type="text" id="id"
+					name="user_id">
+			</p>
 
-	</form>
+			<p>
+				<label for="pw">パスワード</label><br> <input type="password"
+					id="pw" name="pw">
+			</p>
 
-	<div class="nav">
-		<a href="regist.jsp">新規登録はこちら</a>
-	</div>
+			<button type="submit" class="submit">ログイン</button>
+
+		</form>
+
+		<div class="nav">
+			<a href="${pageContext.request.contextPath}/RegistServlet">
+				新規登録はこちら </a>
+		</div>
 	</div>
 </body>
 </html>
