@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+/* キャラクター設定画面 */
+
+/*上の説明文*/
+.chara-info{
+    text-align: center;
+    margin-top: 30px;
+}
+
+/*キャラ選択ボタン*/
+#characterBtn,#nameBtn{
+    font-size: 30px;
+    background-color:rgb(255, 171, 206);
+    color:#fff;
+    width: 200px;
+    height: 130px;
+    border-radius: 30px;
+    border: none; 
+    margin-top: 50px;
+}
+
+/*イラスト２つの大きさ*/
+.image-item{
+    width: 200px; 
+    height: auto; 
+}
+    
+ /*イラスト２つの位置*/
+.whole-image{
+    justify-content: center;
+    display: flex; 
+    gap: 500px;
+}
+
+/*キャラの自己紹介*/
+.self-introduction{
+    background-color: #f8f8f8;
+    padding: 10px;
+    width: 170px;
+    height: 200px;
+    border-radius: 30px;
+}
+
+/*自己紹介と選択ボタンのグループ化*/
+.text-button{
+    justify-content: center;
+    display: flex; 
+    gap: 50px; 
+}

@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* ログイン画面,新規会員登録 */
+.loginsize{
+    margin-left: 160px;  
+}
+
+.top{
+    font-size: 30px;
+    border-bottom: 2px solid rgb(187, 187, 188);
+    width: 1200px; 
+    padding-bottom: 5px;
+}
+
+#id,#pw {
+    font-size: 15px; 
+    padding: 10px;       
+    width: 400px;       
+}
+
+.submit{
+    background-color: black;
+    color: #fff;
+    padding: 15px;       
+    width: 150px; 
+    border-radius: 30px;
+}
+
+/*リンク触った時など　まだ色未定で適当*/
+    .nav a:link{
+    color: rgb(21, 53, 141);
+    text-decoration: none;  }
+
+    .nav a:visited{
+    color: rgb(87, 39, 168);
+    text-decoration: none;  }
+
+    .nav a:hover{
+    color: rgb(226, 16, 16);
+    text-decoration: underline;  }
+
+    .nav a:active{
+    color: rgb(228, 16, 16);
+    text-decoration: underline;  }
