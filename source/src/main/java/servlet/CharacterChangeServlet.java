@@ -36,7 +36,7 @@ public class CharacterChangeServlet extends HttpServlet {
 		
 		//キャラ変更画面へフォワードする
 		RequestDispatcher dispatcher =
-		request.getRequestDispatcher("/charachange.jsp");
+		request.getRequestDispatcher("/WEB-INF/jsp/charachange.jsp");
 		dispatcher.forward(request,response);
 		}
 
@@ -73,7 +73,7 @@ public class CharacterChangeServlet extends HttpServlet {
 				
 		//3 タイプ選択画面（typechange.jsp）へフォワードする
 			RequestDispatcher dispatcher =
-			request.getRequestDispatcher("/typechange.jsp");
+			request.getRequestDispatcher("/WEB-INF/jsp/typechange.jsp");
 			dispatcher.forward(request,response);
 			}
 		

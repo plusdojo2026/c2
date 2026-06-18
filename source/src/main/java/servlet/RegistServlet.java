@@ -33,6 +33,6 @@ public class RegistServlet extends HttpServlet {
         
         // DAOで登録処理
         response.sendRedirect(
-                request.getContextPath() + "/login.jsp");
+                request.getContextPath() + "/WEB-INF/jsp/login.jsp");
     }
 }
