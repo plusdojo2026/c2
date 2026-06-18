@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
 
-@WebServlet("/RegistServlet")
-public class RegistServlet extends HttpServlet {
+	@WebServlet("/RegistServlet")
+	public class RegistServlet extends HttpServlet {
+		
+	@Override
+	    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	            throws ServletException, IOException {
+			System.out.println("RegistServlet開始");
 
+			RequestDispatcher dispatcher =
+				    request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp");
+				dispatcher.forward(request, response);
+		}
+	
+	
     @Override
     protected void doPost(
             HttpServletRequest request,
@@ -33,6 +45,6 @@ public class RegistServlet extends HttpServlet {
         
         // DAOで登録処理
         response.sendRedirect(
-                request.getContextPath() + "/WEB-INF/jsp/login.jsp");
+                request.getContextPath() +"/LoginServlet");
     }
 }

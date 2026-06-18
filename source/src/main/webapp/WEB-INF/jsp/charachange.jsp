@@ -17,17 +17,19 @@
     
     <div class="whole-image">
     	<div class="dog-image">
-    	 <img src="<%=request.getContextPath()%>/images/dog_akitainu.png"
+    	 <img src="<%=request.getContextPath()%>/images/dog.png"
              width="200">
              
-    		<b><button type="submit" name="charaId" value="犬"　id="animal-submit"><b>
+    		<button type="submit" name="charaId"value="犬"id="animal-submit">
         
-    </button>
+    </button></div>
 
-    <button type="submit" name="charaId" value="2">
-        <img src="<%=request.getContextPath()%>/images/pet_cat_sit.png"
+	 <div class="cat-image">
+     		<img src="<%=request.getContextPath()%>/images/cat.png"
              width="200">
-    </button>
+            <button type="submit" name="charaId" value="猫" id="animal-submit">
+       
+    </button></div></div>
 
 </body>
 </html>

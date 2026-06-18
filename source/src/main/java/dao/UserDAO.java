@@ -143,7 +143,7 @@ public class UserDAO {
 	}
 
 	// キャラ変更
-	public boolean update(int charaId, int userId) {
+	public boolean update(int charaId, String userId) {
 
 		boolean result = false;
 
@@ -165,7 +165,7 @@ public class UserDAO {
 					conn.prepareStatement(sql);
 
 			ps.setInt(1, charaId);
-			ps.setInt(2, userId);
+			ps.setString(2, userId);
 
 			result = ps.executeUpdate() > 0;
 

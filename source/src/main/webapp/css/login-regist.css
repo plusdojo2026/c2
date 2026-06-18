@@ -15,7 +15,8 @@
 #id,#pw {
     font-size: 15px; 
     padding: 10px;       
-    width: 400px;       
+    width: 400px; 
+    border-radius: 30px;      
 }
 
 .submit{
