@@ -7,9 +7,8 @@ import java.sql.ResultSet;
 
 public class UserDAO {
 
-	private final String URL =
-			"jdbc:mysql://localhost:3306/test_aibou?"
-			+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9";
+	
+	private final String URL = "jdbc:mysql://localhost:3306/test_aibou?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9";
 
 	private final String USER = "root";
 	private final String PASS = "password";
