@@ -15,7 +15,7 @@ import dao.UserDAO;
 import model.Chara;
 import model.User;
 
-@WebServlet("/TypiServlet")
+@WebServlet("/TypeServlet")
 public class TypeServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -69,7 +69,7 @@ public class TypeServlet extends HttpServlet {
     cDAO.updateType(user.getCharaId(),typeId);
 
     // 設定画面へ戻る
-    response.sendRedirect(request.getContextPath()+ "/CharacterServlet");
+    response.sendRedirect(request.getContextPath()+ "/CharaServlet");
 	}
 }
 

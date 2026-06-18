@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import model.User;
+
 public class UserDAO {
 
 	
@@ -256,15 +258,39 @@ public class UserDAO {
 		return typeId;
 	}
 	
+	//user_idを使ってユーザー情報を取得
 	public User findByUserId(int userId) {
 		
 		Connection conn = null;
 		User user = null;
 		
 		try {
-			conn = DBUtil.getConnection();
+			//SQLへ接続
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(URL,USER,PASS);
+			//SQL文を準備
+			String sql = "SELECT * FROM user WHERE user_id=?";
+			//SQLを実行
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
-			String sql = "SELECT * FROM user WHERE user_id=?"
+			pStmt.setInt(1, userId);
+			
+			ResultSet rs = pStmt.executeQuery();
+			
+			if(rs.next()) {
+				user = new User(
+						rs.getInt("user_id"),
+						rs.getString("login_id"),
+						rs.getString("PW"),
+						rs.getInt("chara_id"),
+						rs.getString("user_nickname"),
+						rs.getString("chara_nickname")
+						);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
+		//結果を返す
+		return user;
 	}
 }
