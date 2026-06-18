@@ -158,4 +158,5 @@ public class DailyDAO {
 
 		return count;
 	}
+	
 }
