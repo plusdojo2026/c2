@@ -28,7 +28,7 @@ public class NameTestServlet extends HttpServlet {
 		UserDto user = new UserDto(1,"サザエさん","タマ");
 		
 		request.setAttribute("user",user);
-		request.getRequestDispatcher("/name.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/name.jsp").forward(request, response);
 	}
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -51,6 +51,6 @@ public class NameTestServlet extends HttpServlet {
 	    request.setAttribute("user", updated);
 	    request.setAttribute("message", "更新成功");
 
-	    request.getRequestDispatcher("/name.jsp").forward(request, response);
+	    request.getRequestDispatcher("/WEB-INF/jsp/name.jsp").forward(request, response);
 	}
 }

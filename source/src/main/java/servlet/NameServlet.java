@@ -46,7 +46,7 @@ public class NameServlet extends HttpServlet{
 		request.setAttribute("user", user);
 		
 		// キャラとユーザの呼び方を登録できるページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/name.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/name.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -89,7 +89,7 @@ public class NameServlet extends HttpServlet{
 		request.setAttribute("message",message);
 		
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/name.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/name.jsp");
 		dispatcher.forward(request, response);
 	}
 }
