@@ -11,14 +11,30 @@
 
 </head>
 <body>
+	<div class="main-area">
 
-	<h2>テーマ選択</h2>
+		<div class="speech">${comment}</div>
 
-	<button type="button" onclick="loadMission('生活')">生活</button>
-	<button type="button" onclick="loadMission('勉強')">勉強</button>
-	<button type="button" onclick="loadMission('運動')">運動</button>
-	<button type="button" onclick="loadMission('お金')">お金</button>
-	<button type="button" onclick="loadMission('趣味')">趣味</button>
+		<div class="chara-area">
+
+			<img src="${pageContext.request.contextPath}/images/${charaImage}">
+		</div>
+
+		<div class="theme-box">
+
+			<h2>テーマ選択</h2>
+
+			<div class="theme-buttons">
+				<button type="button" onclick="loadMission('生活')">生活</button>
+				<button type="button" onclick="loadMission('勉強')">勉強</button>
+				<button type="button" onclick="loadMission('運動')">運動</button>
+				<button type="button" onclick="loadMission('お金')">お金</button>
+				<button type="button" onclick="loadMission('趣味')">趣味</button>
+			</div>
+
+		</div>
+
+	</div>
 
 	<!-- ポップアップ -->
 	<div id="missionPopup" class="popup">

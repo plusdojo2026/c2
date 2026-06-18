@@ -88,9 +88,6 @@
 		</div>
 
 	</div>
-
-
-
 	<script>
 const radarData = [
     ${radarData[0]},

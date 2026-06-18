@@ -1,72 +1,337 @@
 /*ミッション画面*/
+/*ミッション画面*/
+body {
+	background: #ffffff;
+	font-family: sans-serif;
+}
+
+.main-area {
+	position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 上揃え */
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.chara-area img {
+    width: 400px;
+    height: auto;
+    transform: translate(300px, 280px);
+}
+
+/* 吹き出し */
+.speech {
+    position: absolute;
+    left: 200px;
+    top: 40px;
+    width: 600px;
+    height:180px;
+    padding: 15px 20px;
+    background: white;
+    border: 3px solid #ffd6e7;
+    border-radius: 20px;
+    color: #666;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* 吹き出しのしっぽ */
+.speech::before {
+    content: "";
+    position: absolute;
+    left: 260px;
+    bottom: -20px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 20px solid #ffd6e7;
+}
+
+/* 内側（白部分） */
+.speech::after {
+    content: "";
+    position: absolute;
+    left: 262px;
+    bottom: -15px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 18px solid white;
+}
+
+/* タイトル */
+h2 {
+    color: #ff8aa5;
+    font-size: 38px;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+/* 白い囲み */
+.theme-box {
+    width: 450px;
+    min-height: 550px;
+    margin: 10px 30px 20px auto;
+    padding: 20px;
+    background: linear-gradient(
+        180deg,
+        #fffefe 0%,
+        #fff4f8 100%
+    );
+    border: 4px solid #ffd4e3;
+    border-radius: 35px;
+    box-shadow:
+        0 10px 25px rgba(255,170,190,0.25),
+        0 0 0 8px rgba(255,255,255,0.7);
+}
+
+/* タイトル */
+.theme-box h2 {
+    text-align: center;
+    font-size: 42px;
+    color: #ff7fa0;
+    margin-bottom: 35px;
+    letter-spacing: 3px;
+}
+
+/* 縦並び */
+.theme-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* テーマボタン */
+.theme-buttons button {
+    width: 100%;
+    height: 75px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(
+        135deg,
+        #ffb8cc,
+        #ffd9e7
+    );
+    color: #666;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow:
+        0 5px 15px rgba(255,170,190,0.35);
+    transition: all 0.25s ease;
+}
+
+/* ホバー */
+.theme-buttons button:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(
+        135deg,
+        #ff9db9,
+        #ffc8da
+    );
+    box-shadow:
+        0 10px 20px rgba(255,170,190,0.45);
+}
+
+/* クリック時 */
+.theme-buttons button:active {
+    transform: translateY(0);
+}
+
 /* 背景の黒いオーバーレイ */
 .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+}
+
+/* ミッション画面 */
+.popup {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(80, 80, 80, 0.45);
+	backdrop-filter: blur(4px);
+	z-index: 9999;
 }
 
 /* ポップアップ本体 */
 .popup-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 700px;
+	max-width: 90%;
+	background: linear-gradient(180deg, #fffdf8 0%, #fff6f8 100%);
+	border: 4px solid #ffd6e7;
+	border-radius: 30px;
+	padding: 40px;
+	box-sizing: border-box;
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 0 0 10px
+		rgba(255, 255, 255, 0.5);
+}
+
+/* ボタンエリア */
+.popup-btn-area {
+    position: relative;
+    height: 60px;
+    margin-top: 35px;
+}
+
+#saveMissionBtn {
+    display: block;
+    margin: 0 auto;
+
+    width: 220px;
+    height: 55px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #7bc9ff,
+        #9ad8ff
+    );
+
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popup-btn-area button[type="button"] {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    max-width: 90%;
-    background: #fff;
-    border-radius: 20px;
-    padding: 40px;
-    box-sizing: border-box;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    left: 0;
+    top: 0;
+    width: 160px;
+    height: 55px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(
+        135deg,
+        #ffb6c9,
+        #ffd6e5
+    );
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popup-btn-area button[type="button"]:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 20px rgba(255, 182, 201, 0.5);
+}
+
+.popup-btn-area button[type="button"]:active {
+	transform: translateY(0);
 }
 
 /* ×ボタン */
 .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 25px;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	background: #ffe3ec;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 26px;
+	font-weight: bold;
+	color: #ff6b9d;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.close:hover {
+	transform: scale(1.1);
+	background: #ffd1df;
+}
+
+/* 再選出ボタン */
+.popup-btn-area button[type="button"] {
+	width: 140px;
+	height: 50px;
+	border: none;
+	border-radius: 25px;
+	background: #ffe6ee;
+	color: #ff6f91;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(255, 170, 190, 0.3);
+	transition: all 0.2s;
 }
 
 /* タイトル */
 .popup-content h3 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 32px;
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 34px;
+	color: #ff7ba9;
+	letter-spacing: 2px;
 }
 
 /* ミッション一覧 */
 #missionList {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
 }
 
 /* ミッションカード */
 #missionList p {
-    margin: 0;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 20px;
-    background: #f8f8f8;
+	margin: 0;
+	padding: 18px 20px;
+	background: #ffffff;
+	border: 2px solid #ffe4ef;
+	border-radius: 18px;
+	font-size: 20px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+	transition: 0.2s;
+}
+
+#missionList p:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* 決定ボタン */
 #saveMissionBtn {
-    display: block;
-    margin: 30px auto 0;
-    width: 180px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: pointer;
+	display: block;
+	margin: 35px auto 0;
+	width: 220px;
+	height: 55px;
+	border: none;
+	border-radius: 999px;
+	background: linear-gradient(135deg, #7bc9ff, #9ad8ff);
+	color: white;
+	font-size: 22px;
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 0 5px 15px rgba(123, 201, 255, 0.4);
+	transition: 0.2s;
+}
+
+#saveMissionBtn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 20px rgba(123, 201, 255, 0.5);
+}
+
+#saveMissionBtn:active {
+	transform: translateY(0);
 }
