@@ -36,6 +36,7 @@
 </form>
 
 <p>${message}</p>
+<p><a href="/c2/HomeServlet">ホーム</a></p>
 
 </body>
 </html>
