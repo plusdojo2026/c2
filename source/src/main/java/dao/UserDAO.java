@@ -215,4 +215,44 @@ public class UserDAO {
 
 		return charaId;
 	}
+	
+	// type_id取得
+	public int getTypeId(int userId) {
+
+		int typeId = 0;
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection conn =
+					DriverManager.getConnection(
+							URL,
+							USER,
+							PASS);
+
+			String sql =
+					"SELECT type_id "
+					+ "FROM user "
+					+ "WHERE user_id = ?";
+
+			PreparedStatement ps =
+					conn.prepareStatement(sql);
+
+			ps.setInt(1, userId);
+
+			ResultSet rs =
+					ps.executeQuery();
+
+			if (rs.next()) {
+				typeId = rs.getInt("type_id");
+			}
+
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return typeId;
+	}
 }
