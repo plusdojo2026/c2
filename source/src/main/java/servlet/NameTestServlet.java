@@ -22,7 +22,9 @@ public class NameTestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	
 			throws ServletException, IOException {
-			
+		// ★ 改善案：本番と同じように session に userId を入れる
+        request.getSession().setAttribute("userId", 1);
+        		
 		UserDto user = new UserDto(1,"サザエさん","タマ");
 		
 		request.setAttribute("user",user);
@@ -37,12 +39,14 @@ public class NameTestServlet extends HttpServlet {
 	        throws ServletException, IOException {
 
 	    request.setCharacterEncoding("UTF-8");
-
+	    
+        int userId = (Integer) request.getSession().getAttribute("userId");
 	    String newChara = request.getParameter("charaNickname");
 	    String newUser = request.getParameter("userNickname");
-
+	    
+	    
 	    // 受け取った値で DTO を作り直す。
-	    UserDto updated = new UserDto(1, newUser, newChara);
+	    UserDto updated = new UserDto(userId, newUser, newChara);
 
 	    request.setAttribute("user", updated);
 	    request.setAttribute("message", "更新成功");

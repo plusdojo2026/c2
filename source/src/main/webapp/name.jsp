@@ -7,7 +7,7 @@
 <title>がんばろうあいぼう | 呼び方設定</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/NameTestServlet"
+	<form action="${pageContext.request.contextPath}/NameServlet"
       method="post">
 	
 	<p>現在のキャラの呼び名：${user.charaNickname}</p>
