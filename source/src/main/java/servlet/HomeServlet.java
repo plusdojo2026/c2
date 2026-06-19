@@ -18,283 +18,273 @@ import dao.UserDAO;
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        System.out.println("HomeServlet実行");
+		System.out.println("HomeServlet実行");
 
-        HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
-        Integer userId = (Integer) session.getAttribute("userId");
+		Integer userId = (Integer) session.getAttribute("userId");
 
-        if (userId == null) {
-            response.sendRedirect(request.getContextPath() + "/LoginServlet");
-            return;
-        }
+		if (userId == null) {
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
+			return;
+		}
 
-        DailyDAO dao = new DailyDAO();
+		DailyDAO dao = new DailyDAO();
 
-        // ミッション取得
-        String[] missions = dao.getTodayMissions(userId);
+		// ミッション取得
+		String[] missions = dao.getTodayMissions(userId);
 
-        System.out.println("===== missions =====");
+		if (missions != null) {
+			for (String m : missions) {
+				System.out.println(m);
+			}
+		} else {
+			System.out.println("missions = null");
+		}
 
-        if (missions != null) {
-            for (String m : missions) {
-                System.out.println(m);
-            }
-        } else {
-            System.out.println("missions = null");
-        }
+		request.setAttribute("missions", missions);
 
-        request.setAttribute("missions", missions);
+		int[] completes = dao.getTodayCompletes(userId);
+		request.setAttribute("completes", completes);
 
-        int[] completes = dao.getTodayCompletes(userId);
-        request.setAttribute("completes", completes);
+		// キャラ取得
+		UserDAO userDao = new UserDAO();
+		int charaId = userDao.getCharaId(userId);
+		int typeId = userDao.getTypeId(charaId);
 
-        // キャラ取得
-        UserDAO userDao = new UserDAO();
-        int charaId = userDao.getCharaId(userId);
-        int typeId = userDao.getTypeId(charaId);
+		System.out.println("charaId=" + charaId);
+		System.out.println("typeId=" + typeId);
 
-        System.out.println("charaId=" + charaId);
-        System.out.println("typeId=" + typeId);
+		request.setAttribute("charaId", charaId);
+		request.setAttribute("typeId", typeId);
 
-        request.setAttribute("charaId", charaId);
-        request.setAttribute("typeId", typeId);
+		String charaImage = "default.png";
+		String charaMessage = "今日も頑張ろう！";
 
-        String charaImage = "default.png";
-        String charaMessage = "今日も頑張ろう！";
+		Random random = new Random();
 
-        Random random = new Random();
+		switch (charaId) {
 
-        switch (charaId) {
+		case 1:
+		case 3:
 
-        case 1:
-        case 3:
+			charaImage = "dog.png";
 
-            charaImage = "dog.png";
+			String[] dogMessages = { "ミッション達成を目指そうワン！", "今日も元気にいくワン！", "少しずつでも前進だワン！", "頑張った分だけ成長するワン！",
+					"一緒にゴールを目指そうワン！", "無理せずコツコツだワン！", "昨日の自分を超えよう！", "その調子だワン！", "今日も応援してるワン！", "まずは一つ達成してみようワン！" };
 
-            String[] dogMessages = {
-                    "ミッション達成を目指そうワン！",
-                    "今日も元気にいくワン！",
-                    "少しずつでも前進だワン！",
-                    "頑張った分だけ成長するワン！",
-                    "一緒にゴールを目指そうワン！",
-                    "無理せずコツコツだワン！",
-                    "昨日の自分を超えよう！",
-                    "その調子だワン！",
-                    "今日も応援してるワン！",
-                    "まずは一つ達成してみようワン！"
-            };
+			charaMessage = dogMessages[random.nextInt(dogMessages.length)];
+			break;
 
-            charaMessage = dogMessages[random.nextInt(dogMessages.length)];
-            break;
+		case 2:
+		case 4:
 
-        case 2:
-        case 4:
+			charaImage = "cat.png";
 
-            charaImage = "cat.png";
+			String[] catMessages = { "ニャー！今日も一緒に頑張るニャー！", "焦らなくて大丈夫ニャー！", "コツコツ続けるのが大事ニャー！", "まずは一つ終わらせるニャー！",
+					"きっとできるニャー！", "今日も応援してるニャー！", "少しずつ成長するニャー！", "休憩もしながら頑張るニャー！", "その調子ニャー！", "達成したら褒めてあげるニャー！" };
 
-            String[] catMessages = {
-                    "ニャー！今日も一緒に頑張るニャー！",
-                    "焦らなくて大丈夫ニャー！",
-                    "コツコツ続けるのが大事ニャー！",
-                    "まずは一つ終わらせるニャー！",
-                    "きっとできるニャー！",
-                    "今日も応援してるニャー！",
-                    "少しずつ成長するニャー！",
-                    "休憩もしながら頑張るニャー！",
-                    "その調子ニャー！",
-                    "達成したら褒めてあげるニャー！"
-            };
+			charaMessage = catMessages[random.nextInt(catMessages.length)];
+			break;
 
-            charaMessage = catMessages[random.nextInt(catMessages.length)];
-            break;
+		default:
+			charaImage = "default.png";
+			charaMessage = "今日も頑張ろう！";
+			break;
+		}
 
-        default:
-            charaImage = "default.png";
-            charaMessage = "今日も頑張ろう！";
-            break;
-        }
+		// 達成数取得
+		int completeCount = dao.getTodayCompleteCount(userId);
 
-        // 達成数取得
-        int completeCount = dao.getTodayCompleteCount(userId);
+		System.out.println("達成数=" + completeCount);
 
-        System.out.println("達成数=" + completeCount);
+		if (completeCount >= 3) {
 
-        if (completeCount >= 3) {
+			if (charaId == 1) {
 
-            if (charaId == 1) {
+				String[] dogComplete = { "全部達成すごいワン！", "今日は100点だワン！", "頑張った成果だワン！", "たくさん褒めたいワン！", "最高の一日だワン！" };
 
-                String[] dogComplete = {
-                        "全部達成すごいワン！",
-                        "今日は100点だワン！",
-                        "頑張った成果だワン！",
-                        "たくさん褒めたいワン！",
-                        "最高の一日だワン！"
-                };
+				charaMessage = dogComplete[random.nextInt(dogComplete.length)];
 
-                charaMessage = dogComplete[random.nextInt(dogComplete.length)];
+			} else if (charaId == 2) {
 
-            } else if (charaId == 2) {
+				String[] catComplete = { "全部達成おめでとうニャー！", "すごいニャー！", "今日は満点ニャー！", "いっぱい褒めるニャー！", "最高だったニャー！" };
 
-                String[] catComplete = {
-                        "全部達成おめでとうニャー！",
-                        "すごいニャー！",
-                        "今日は満点ニャー！",
-                        "いっぱい褒めるニャー！",
-                        "最高だったニャー！"
-                };
+				charaMessage = catComplete[random.nextInt(catComplete.length)];
+			}
 
-                charaMessage = catComplete[random.nextInt(catComplete.length)];
-            }
+		} else if (completeCount == 2) {
 
-        } else if (completeCount == 2) {
+			if (charaId == 1) {
 
-            if (charaId == 1) {
+				String[] dog2 = { "あと1つだワン！", "もう少しでコンプリートだワン！", "頑張ってるワン！" };
 
-                String[] dog2 = {
-                        "あと1つだワン！",
-                        "もう少しでコンプリートだワン！",
-                        "頑張ってるワン！"
-                };
+				charaMessage = dog2[random.nextInt(dog2.length)];
 
-                charaMessage = dog2[random.nextInt(dog2.length)];
+			} else if (charaId == 2) {
 
-            } else if (charaId == 2) {
+				String[] cat2 = { "あと少しニャー！", "もう一息ニャー！", "順調ニャー！" };
 
-                String[] cat2 = {
-                        "あと少しニャー！",
-                        "もう一息ニャー！",
-                        "順調ニャー！"
-                };
+				charaMessage = cat2[random.nextInt(cat2.length)];
+			}
 
-                charaMessage = cat2[random.nextInt(cat2.length)];
-            }
+		} else if (completeCount == 1) {
 
-        } else if (completeCount == 1) {
+			if (charaId == 1) {
 
-            if (charaId == 1) {
+				String[] dog1 = { "1つ達成したワン！", "いいスタートだワン！", "その調子だワン！" };
 
-                String[] dog1 = {
-                        "1つ達成したワン！",
-                        "いいスタートだワン！",
-                        "その調子だワン！"
-                };
+				charaMessage = dog1[random.nextInt(dog1.length)];
 
-                charaMessage = dog1[random.nextInt(dog1.length)];
+			} else if (charaId == 2) {
 
-            } else if (charaId == 2) {
+				String[] cat1 = { "1つ達成したニャー！", "いい感じニャー！", "その調子ニャー！" };
 
-                String[] cat1 = {
-                        "1つ達成したニャー！",
-                        "いい感じニャー！",
-                        "その調子ニャー！"
-                };
+				charaMessage = cat1[random.nextInt(cat1.length)];
+			}
+		}
 
-                charaMessage = cat1[random.nextInt(cat1.length)];
-            }
-        }
+		// 時間帯による画像変更
+		LocalTime now = LocalTime.now();
+		int hour = now.getHour();
 
-     // 時間帯による画像変更
-        LocalTime now = LocalTime.now();
-        int hour = now.getHour();
+		// 背景画像
+		String backgroundImage;
 
-        boolean isDog = (charaId == 1 || charaId == 3);
-        boolean isCat = (charaId == 2 || charaId == 4);
+		if (hour >= 6 && hour < 18) {
+			backgroundImage = "home1_noon.png";
+		} else {
+			backgroundImage = "home1_night.png";
+		}
 
-        boolean morningType = (typeId == 1 || typeId == 2);
-        boolean nightType = (typeId == 3 || typeId == 4);
+		request.setAttribute("backgroundImage", backgroundImage);
 
-        // 晩ご飯（0時）
-        if (hour == 0) {
+		boolean isDog = (charaId == 1 || charaId == 3);
+		boolean isCat = (charaId == 2 || charaId == 4);
 
-            if (isDog) {
-                charaImage = "dog_dinner.png";
-                charaMessage = "晩ご飯の時間だワン！";
-            } else if (isCat) {
-                charaImage = "cat_dinner.png";
-                charaMessage = "魚がおいしいニャー！";
-            }
+		boolean morningType = (typeId == 1 || typeId == 2);
+		boolean nightType = (typeId == 3 || typeId == 4);
 
-        }
-        // 朝ご飯（5時）
-        else if (hour == 5) {
+		// 朝型（type 1,2）
+		if (morningType) {
+
+			// 朝ご飯（8時）
+			if (hour == 8) {
 
-            if (isDog) {
-                charaImage = "dog_morning.png";
-                charaMessage = "朝ご飯を食べるワン！";
-            } else if (isCat) {
-                charaImage = "cat_morning.png";
-                charaMessage = "朝ご飯ニャー！";
-            }
+				if (isDog) {
+					charaImage = "dog_morning.png";
+					charaMessage = "朝ご飯を食べるワン！";
+				} else if (isCat) {
+					charaImage = "cat_morning.png";
+					charaMessage = "朝ご飯ニャー！";
+				}
 
-        }
-        // 昼ご飯（12時）
-        else if (hour == 12) {
+			}
+			// 昼ご飯（12時）
+			else if (hour == 12) {
 
-            if (isDog) {
-                charaImage = "dog_lunch.png";
-                charaMessage = "お昼ご飯だワン！";
-            } else if (isCat) {
-                charaImage = "cat_lunch.png";
-                charaMessage = "魚ランチだニャー！";
-            }
+				if (isDog) {
+					charaImage = "dog_lunch.png";
+					charaMessage = "お昼ご飯だワン！";
+				} else if (isCat) {
+					charaImage = "cat_lunch.png";
+					charaMessage = "魚ランチだニャー！";
+				}
 
-        }
-        // お風呂（13時）
-        else if (hour == 13) {
+			}
+			// 晩ご飯（19時）
+			else if (hour == 19) {
 
-            if (isDog) {
-                charaImage = "dog_bath.png";
-                charaMessage = "お風呂でさっぱりワン！";
-            } else if (isCat) {
-                charaImage = "cat_bath.png";
-                charaMessage = "ぽかぽかニャー！";
-            }
+				if (isDog) {
+					charaImage = "dog_dinner.png";
+					charaMessage = "晩ご飯の時間だワン！";
+				} else if (isCat) {
+					charaImage = "cat_dinner.png";
+					charaMessage = "魚がおいしいニャー！";
+				}
 
-        }
-        // 睡眠判定
-        else {
+			}
+			// お風呂（20時）
+			else if (hour == 20) {
 
-            boolean sleeping = false;
+				if (isDog) {
+					charaImage = "dog_bath.png";
+					charaMessage = "お風呂でさっぱりワン！";
+				} else if (isCat) {
+					charaImage = "cat_bath.png";
+					charaMessage = "ぽかぽかニャー！";
+				}
 
-            // 朝型（23時～7時）
-            if (morningType) {
+			}
 
-                sleeping = (hour >= 23 || hour < 7);
+		}
+		// 夜型（type 3,4）
+		else if (nightType) {
 
-            }
-            // 夜型（15時～23時）
-            else if (nightType) {
+			// 晩ご飯（0時）
+			if (hour == 0) {
 
-                sleeping = (hour >= 15 && hour < 23);
+				if (isDog) {
+					charaImage = "dog_dinner.png";
+					charaMessage = "晩ご飯の時間だワン！";
+				} else if (isCat) {
+					charaImage = "cat_dinner.png";
+					charaMessage = "魚がおいしいニャー！";
+				}
 
-            }
+			}
+			// 朝ご飯（5時）
+			else if (hour == 5) {
 
-            if (sleeping) {
+				if (isDog) {
+					charaImage = "dog_morning.png";
+					charaMessage = "朝ご飯を食べるワン！";
+				} else if (isCat) {
+					charaImage = "cat_morning.png";
+					charaMessage = "朝ご飯ニャー！";
+				}
 
-                if (isDog) {
-                    charaImage = "dog_sleep.png";
-                    charaMessage = "すやすやワン...";
-                } else if (isCat) {
-                    charaImage = "cat_sleep.png";
-                    charaMessage = "すやすやニャー...";
-                }
-            }
-        }
+			}
+			// 昼ご飯（12時）
+			else if (hour == 12) {
 
-        request.setAttribute("charaImage", charaImage);
-        request.setAttribute("charaMessage", charaMessage);
+				if (isDog) {
+					charaImage = "dog_lunch.png";
+					charaMessage = "お昼ご飯だワン！";
+				} else if (isCat) {
+					charaImage = "cat_lunch.png";
+					charaMessage = "魚ランチだニャー！";
+				}
 
-        HomeDAO homeDao = new HomeDAO();
+			}
+			// お風呂（13時）
+			else if (hour == 13) {
 
-        int[] radarData = homeDao.getRadarData(userId);
+				if (isDog) {
+					charaImage = "dog_bath.png";
+					charaMessage = "お風呂でさっぱりワン！";
+				} else if (isCat) {
+					charaImage = "cat_bath.png";
+					charaMessage = "ぽかぽかニャー！";
+				}
 
-        request.setAttribute("radarData", radarData);
+			}
 
-        request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request, response);
-    }
+		}
+
+		request.setAttribute("charaImage", charaImage);
+		request.setAttribute("charaMessage", charaMessage);
+
+		HomeDAO homeDao = new HomeDAO();
+
+		int[] radarData = homeDao.getRadarData(userId);
+
+		request.setAttribute("radarData", radarData);
+
+		request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request, response);
+	}
 }

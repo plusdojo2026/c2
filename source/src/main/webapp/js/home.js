@@ -2,8 +2,6 @@ console.log("home.js 読み込み成功");
 
 window.addEventListener('DOMContentLoaded', () => {
 
-	console.log("DOM読み込み完了");
-
 	console.log(
 		"ボタン数=",
 		document.querySelectorAll('.complete-btn').length
@@ -12,8 +10,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.querySelectorAll('.complete-btn').forEach(button => {
 
 		button.addEventListener('click', () => {
-
-			console.log("クリックされた");
 
 			const missionName = button.dataset.mission;
 			const complete = button.dataset.complete;
@@ -27,8 +23,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	const ctx = document.getElementById('radarChart');
 
-	console.log("radarData=", radarData);
-
 	new Chart(ctx, {
 		type: 'radar',
 		data: {
@@ -37,9 +31,8 @@ window.addEventListener('DOMContentLoaded', () => {
 				label: '達成数',
 				data: radarData,
 				fill: true,
-				backgroundColor: 'rgba(54, 162, 235, 0.2)',
-				borderColor: 'rgb(54, 162, 235)',
-				pointBackgroundColor: 'rgb(54, 162, 235)'
+				backgroundColor: 'rgba(255, 182, 193, 0.4)',
+				borderColor: '#ff8fb1',
 			}]
 		},
 		options: {
@@ -51,7 +44,10 @@ window.addEventListener('DOMContentLoaded', () => {
 					max: 5,
 					ticks: {
 						stepSize: 1
-					}
+					},
+					grid: {
+						lineWidth: 3
+					},
 				}
 			}
 		}

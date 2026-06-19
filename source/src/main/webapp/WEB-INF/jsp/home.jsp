@@ -12,7 +12,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<div class="chart-and-text">
-		<canvas id="radarChart" width="400" height="400"></canvas>
+
+		<div class="radar-area">
+			<canvas id="radarChart" width="400" height="350"></canvas>
+		</div>
 
 		<div class="mission-area">
 			<h1>今日のミッション</h1>
@@ -34,7 +37,9 @@
 					</div>
 				</c:if>
 			</c:forEach>
+
 		</div>
+
 	</div>
 
 	<div class="character-area">
@@ -86,8 +91,12 @@
 			<div class="chara-message">${charaMessage}</div>
 
 		</div>
-
 	</div>
+<body class="home-body"
+	style="
+background-image:url('${pageContext.request.contextPath}/images/${backgroundImage}');
+">
+
 	<script>
 const radarData = [
     ${radarData[0]},

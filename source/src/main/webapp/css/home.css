@@ -1,189 +1,195 @@
 /* ホーム画面 */
 /*　レーダーチャート　*/
 .chart-and-text {
-  display: flex;
-  align-items: flex-start; /* 上揃え */
-  gap: 20px; /* チャートとテキストの間隔 */
+	display: flex;
+	align-items: flex-start; /* 上揃え */
+	gap: 40px; /* チャートとテキストの間隔 */
+}
+
+.radar-area {
+	width: 450px;
+	background: rgba(255, 255, 255, 0.8);
+	border: 4px solid #ffd6e7;
+	border-radius: 30px;
+	padding: 10px;
+	text-align: center;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), inset 0 0 0 5px #fff4cf;
 }
 
 /* 今日のミッション */
-.mission-area{
-    width:900px;
-    background:#fffdf7;
-    border:4px solid #ffd97d;
-    border-radius:30px;
-    padding:35px;
-    box-shadow:
-        0 8px 20px rgba(0,0,0,0.08),
-        inset 0 0 0 5px #fff4cf;
+.mission-area {
+	width: 900px;
+	background: rgba(255, 255, 255, 0.8);
+	border: 4px solid #ffd6e7;
+	border-radius: 30px;
+	padding: 15px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), inset 0 0 0 5px #fff4cf;
 }
 
-.mission-area h1{
-    text-align:center;
-    margin-bottom:30px;
-    font-size:32px;
-    color:#ff8c42;
-    text-shadow:2px 2px 0 #fff;
+.mission-area h1 {
+	text-align: center;
+	font-size: 32px;
+	color: #ff8c42;
+	text-shadow: 2px 2px 0 #fff;
 }
 
 .mission-row {
-  display: grid;
-  grid-template-columns: 1fr 100px 130px;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
+	display: grid;
+	grid-template-columns: 1fr 100px 130px;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 15px;
 }
 
 .mission-row p {
-  margin: 0;
-  font-size: 24px;
+	margin: 0;
+	font-size: 24px;
 }
 
 /* ボタン共通 */
 .complete-btn {
-  border: none;
-  border-radius: 30px;
-  padding: 10px 16px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  background: #d9d9d9;
-  color: #555;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 0 #b5b5b5;
+	border: none;
+	border-radius: 30px;
+	padding: 10px 16px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	background: #d9d9d9;
+	color: #555;
+	transition: all 0.2s ease;
+	box-shadow: 0 4px 0 #b5b5b5;
 }
 
 /* ホバー */
 .complete-btn:hover {
-  transform: translateY(-2px);
+	transform: translateY(-2px);
 }
 
 /* 押した感 */
 .complete-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #b5b5b5;
+	transform: translateY(2px);
+	box-shadow: 0 2px 0 #b5b5b5;
 }
 
 /* 選択時 */
 .complete-btn.active {
-  background: linear-gradient(
-    180deg,
-    #6cb6ff 0%,
-    #3f8cff 100%
-  );
-  color: white;
-  box-shadow:
-    0 0 10px rgba(63, 140, 255, 0.6),
-    0 4px 0 #2d6fd4;
+	background: linear-gradient(180deg, #6cb6ff 0%, #3f8cff 100%);
+	color: white;
+	box-shadow: 0 0 10px rgba(63, 140, 255, 0.6), 0 4px 0 #2d6fd4;
 }
 
-
-
-.image-item{
-    width: 400px;
-    height: auto;
-    margin-top: -30px;
+.image-item {
+	width: 400px;
+	height: auto;
+	margin-top: -30px;
 }
 
 /* 各画面遷移ボタン */
-.home-menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin-left: 150px;
-    margin-top: -80px;
+.home-menu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+	margin-left: 150px;
+	margin-top: -60px;
 }
-.menu-top{
-    display: flex;
-    justify-content: center;
+
+.menu-top {
+	display: flex;
+	justify-content: center;
 }
-.menu-bottom{
-    display: flex;
-    gap: 40px;
+
+.menu-bottom {
+	display: flex;
+	gap: 40px;
 }
 
 /* ボタン */
-.image-button{
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
+.image-button {
+	border: none;
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
 }
 
-.image-button img{
-    width: 320px;
-    height: auto;
-    transition: transform 0.2s ease;
+.image-button img {
+	width: 320px;
+	height: auto;
+	transition: transform 0.2s ease;
 }
 
-.image-button:hover img{
-    transform: scale(1.05);
+.image-button:hover img {
+	transform: scale(1.05);
 }
 
-.image-button:active img{
-    transform: scale(0.98);
+.image-button:active img {
+	transform: scale(0.98);
 }
 
 /* マウスを乗せた時 */
-.home-menu button:hover{
-    background-color: #45a049;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+.home-menu button:hover {
+	transform: translateY(-3px);
 }
 /* 押した時 */
-.home-menu button:active{
-    transform: translateY(2px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+.home-menu button:active {
+	transform: translateY(2px);
 }
 
-.character-area{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
+.character-area {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
 }
-.right-area{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+.right-area {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 /* コメント部分 */
-.chara-message{
-    position: relative;
-    width: 780px;
-    padding: 60px 30px;
-    background: #fff;
-    border: 3px solid #333;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 35px;
-    font-weight: bold;
-    box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+.chara-message {
+	position: relative;
+	width: 780px;
+	padding: 40px 30px;
+	background: #fff;
+	border: 3px solid #333;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 35px;
+	font-weight: bold;
+	box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
 }
 /* コメント黒い枠部分 */
-.chara-message::after{
-    content: "";
-    position: absolute;
-    left: -18px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 12px 18px 12px 0;
-    border-style: solid;
-    border-color: transparent #333 transparent transparent;
+.chara-message::after {
+	content: "";
+	position: absolute;
+	left: -18px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-width: 12px 18px 12px 0;
+	border-style: solid;
+	border-color: transparent #333 transparent transparent;
 }
 
 /* コメント白い内側部分 */
-.chara-message::before{
-    content: "";
-    position: absolute;
-    left: -13px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 9px 14px 9px 0;
-    border-style: solid;
-    border-color: transparent #fff transparent transparent;
-    z-index: 1;
+.chara-message::before {
+	content: "";
+	position: absolute;
+	left: -13px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-width: 9px 14px 9px 0;
+	border-style: solid;
+	border-color: transparent #fff transparent transparent;
+	z-index: 1;
 }
 
+.home-body {
+	margin: 0;
+	min-height: 100vh;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
