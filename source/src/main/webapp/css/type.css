@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* タイプ選択 */
+
+/*上の説明文*/
+.type-info{
+    text-align: center;
+}
+
+/*タイプボタン*/
+.type-button1, .type-button2, .type-button3, .type-button4{
+     color:#fff;
+            width: 200px;
+            height: 70px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            transition: opacity 0.2s ease-out; 
+            margin: 10px
+}
+
+/*ボタンの色*/
+.type-button1 {background-color:rgb(255, 179, 98);}
+
+.type-button2 {background-color:rgb(34, 20, 128);}        
+
+/*ボタンの動き*/
+.type-button1, .type-button2, .type-button3, .type-button4{
+    transition: transform 0.2s ease-out;
+}
+
+.type-button1:hover, .type-button2:hover, .type-button3:hover, .type-button4:hover {
+    transform: scale(0.95); 
+}
+
+/*タイプの説明文*/
+.type-info2{
+    background-color: #f8f8f8;
+    color:rgb(99, 99, 99);
+    padding: 10px;
+    width: 700px;
+    height: 230px;
+    border-radius: 30px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 80px;
+}
