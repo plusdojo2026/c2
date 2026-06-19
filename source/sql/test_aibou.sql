@@ -1,5 +1,11 @@
+
 /*変更点
-データを増やしました
+※0619時点
+ミッションの数を増やしました
+もし、ミッションを増やしたかったら言ってください。
+
+※0616時点
+時点データを増やしました
 外部制約キーを付け加えました。
 ユーザテーブルのキャラクターidをデフォルトで１が入れられるようにしました。（1はすなわち犬です。）
 ユーザテーブル→パスワードを四文字以上じゃない登録できないようにした*/
@@ -50,6 +56,46 @@ INSERT INTO mission (theme_id,mission_name) VALUES(
     1,'夕食を食べる'
 );
 
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'15分散歩する'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'洗濯をする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'食器を洗う'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'お風呂につかる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'部屋の掃除をする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'風呂掃除をする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'１食自炊する'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'トイレ掃除をする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'ゴミ出しする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    1,'挨拶をする'
+);
+
 
 INSERT INTO mission (theme_id,mission_name) VALUES(
     2,'資格勉強を30分する。'
@@ -60,7 +106,31 @@ INSERT INTO mission (theme_id,mission_name) VALUES(
 );
 
 INSERT INTO mission (theme_id,mission_name) VALUES(
-    4,'最安値を調べてから買い物をする '
+    2,'政治に関するニュース記事を調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    2,'芸能・エンタメに関するニュース記事を調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    2,'IT・テクノロジーに関するニュース記事を調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    2,'国際情勢に関するニュース記事を調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    2,'スポーツに関するニュース記事を調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    2,'本を読む'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'最安値の店を調べてから買い物をする '
 );
 
 INSERT INTO mission (theme_id,mission_name) VALUES(
@@ -68,19 +138,104 @@ INSERT INTO mission (theme_id,mission_name) VALUES(
 );
 
 INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'節電する（不要なコンセントを抜く）'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'家計簿をつける'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'固定費を見直す（光熱費、通信費やサブスクなど）'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'投資、税金、保険について勉強する'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'ふるさと納税について調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'NISAについて調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    4,'クレジットカードの利用額を確認する'
+);
+
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
     5,'趣味の時間を10分とる '
 );
 
 INSERT INTO mission (theme_id,mission_name) VALUES(
-    3,'腹筋を10回する '
+    5,'身近な人と連絡を取る（会話する）'
 );
 
 INSERT INTO mission (theme_id,mission_name) VALUES(
-    3,'背筋を10回する '
+    5,'10分以上本を読む'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    5,'グルメ情報を調べる'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    5,'趣味の記録をつける'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    5,'趣味仲間と交流する'
+);
+
+
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'腹筋を10回以上する '
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'背筋を10回以上する '
 );
 INSERT INTO mission (theme_id,mission_name) VALUES(
-    3,'腕立て伏せを10回する '
+    3,'腕立て伏せを10回以上する '
 );
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'スクワットを10回以上する '
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'10分以上散歩する'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'ラジオ体操をする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'ストレッチをする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'ジョギングする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'階段を使う'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'肩回しをする'
+);
+
+INSERT INTO mission (theme_id,mission_name) VALUES(
+    3,'座る姿勢や立つ姿勢を意識する'
+);
+
+
 
 SELECT * FROM mission;
 
@@ -194,3 +349,52 @@ INSERT INTO daily_mission (user_id,mission_id,daily,complete) VALUES(
 );
 
 SELECT * FROM daily_mission;
+
+/*実験的なSQL*/
+/*外部結合でのSELECT テーマとミッション*/
+SELECT theme.theme_name, mission_name FROM theme 
+LEFT JOIN mission
+on theme.theme_id=mission.theme_id;
+
+/*ユーザテーブルとキャラテーブルの結合*/
+SELECT user.user_id, user.user_nickname,user.chara_nickname,chara.image,chara.speak FROM user 
+LEFT JOIN chara
+on user.chara_id=chara.chara_id;
+
+SELECT u.user_id, u.user_nickname, u.chara_nickname,
+       c.image, c.speak
+FROM user AS u
+LEFT JOIN chara AS c
+  ON u.chara_id = c.chara_id;
+
+/*生活のテーマでミッションを選択する*/
+
+SELECT m.mission_name 
+            FROM mission AS m 
+            JOIN theme AS t 
+ON m.theme_id = t.theme_id 
+            WHERE t.theme_name='生活' ;
+
+/*生活テーマでランダムに三つのミッションを出す */
+SELECT mission_id,mission_name 
+FROM mission
+WHERE theme_id = 1
+ORDER BY RAND()
+LIMIT 3;
+/*勉強テーマでランダムに三つのミッションを出す */
+
+SELECT mission_id,mission_name 
+FROM mission
+WHERE theme_id =2 
+ORDER BY RAND()
+LIMIT 3;
+
+SELECT mission_id,mission_name 
+FROM mission
+WHERE theme_id =5
+ORDER BY RAND()
+LIMIT 3;
+
+
+
+
