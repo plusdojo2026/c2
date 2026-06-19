@@ -70,7 +70,9 @@ public class HomeServlet extends HttpServlet {
 		switch (charaId) {
 
 		case 1:
+		case 2:
 		case 3:
+		case 4:
 
 			charaImage = "dog.png";
 
@@ -80,8 +82,10 @@ public class HomeServlet extends HttpServlet {
 			charaMessage = dogMessages[random.nextInt(dogMessages.length)];
 			break;
 
-		case 2:
-		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
 
 			charaImage = "cat.png";
 

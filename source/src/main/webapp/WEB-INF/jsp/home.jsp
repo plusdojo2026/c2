@@ -105,6 +105,15 @@ const radarData = [
 
 console.log("JSP radarData=", radarData);
 </script>
+	<form action="${pageContext.request.contextPath}/LogoutServlet"
+      method="get"
+      class="logout-form">
+
+    <button type="submit" class="logout-btn">
+        ログアウト
+    </button>
+
+</form>
 
 	<script src="<%=request.getContextPath()%>/js/home.js"></script>
 </body>

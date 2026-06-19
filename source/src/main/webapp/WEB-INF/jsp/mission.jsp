@@ -11,6 +11,13 @@
 
 </head>
 <body>
+
+	<form action="${pageContext.request.contextPath}/HomeServlet"
+		method="get" class="back-form">
+
+		<button type="submit" class="back-btn">戻る</button>
+
+	</form>
 	<div class="main-area">
 
 		<div class="speech">${comment}</div>
