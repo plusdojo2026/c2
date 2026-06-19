@@ -8,7 +8,8 @@
 <title>がんばろうあいぼう | ホーム</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/home.css">
 </head>
-<body>
+<body class="home-body"
+	style="background-image:url('${pageContext.request.contextPath}/images/${backgroundImage}');">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<div class="chart-and-text">
@@ -92,10 +93,6 @@
 
 		</div>
 	</div>
-<body class="home-body"
-	style="
-background-image:url('${pageContext.request.contextPath}/images/${backgroundImage}');
-">
 
 	<script>
 const radarData = [

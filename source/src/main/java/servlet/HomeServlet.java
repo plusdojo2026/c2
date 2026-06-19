@@ -154,17 +154,25 @@ public class HomeServlet extends HttpServlet {
 
 		// 背景画像
 		String backgroundImage;
+		
+		System.out.println("charaId=" + charaId);
+		System.out.println("typeId=" + typeId);
 
-		if (hour >= 6 && hour < 18) {
-			backgroundImage = "home1_noon.png";
+		boolean outsideType = (typeId == 1 || typeId == 3);
+		boolean daytime = (hour >= 6 && hour < 18);
+
+		if (outsideType) {
+			backgroundImage = daytime ? "outside_noon.png" : "outside_night.png";
 		} else {
-			backgroundImage = "home1_night.png";
+			backgroundImage = daytime ? "home1_noon.png" : "home1_night.png";
 		}
 
 		request.setAttribute("backgroundImage", backgroundImage);
-
 		boolean isDog = (charaId == 1 || charaId == 3);
 		boolean isCat = (charaId == 2 || charaId == 4);
+		
+		System.out.println("typeId=" + typeId);
+		System.out.println("backgroundImage=" + backgroundImage);
 
 		boolean morningType = (typeId == 1 || typeId == 2);
 		boolean nightType = (typeId == 3 || typeId == 4);

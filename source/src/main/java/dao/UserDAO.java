@@ -233,9 +233,11 @@ public class UserDAO {
 							PASS);
 
 			String sql =
-					"SELECT type_id "
-					+ "FROM user "
-					+ "WHERE user_id = ?";
+					"SELECT c.type_id "
+					+ "FROM user u "
+					+ "INNER JOIN chara c "
+					+ "ON u.chara_id = c.chara_id "
+					+ "WHERE u.user_id = ?";
 
 			PreparedStatement ps =
 					conn.prepareStatement(sql);
