@@ -1,8 +1,10 @@
 
 /*変更点
 ※0619時点
+キャラidを増やしました。キャラ×タイプの組み合わせを増やしました。
+ユーザテーブルのpwを小文字に変更しました。
 ミッションの数を増やしました
-もし、ミッションを増やしたかったら言ってください。
+もし、ミッションを増やしたかったら言ってください
 
 ※0616時点
 時点データを増やしました
@@ -275,7 +277,27 @@ INSERT INTO chara (image,speak,type_id) VALUES(
     '犬','ワン',1
 );
 INSERT INTO chara (image,speak,type_id) VALUES(
+    '犬','ワン',2
+);
+
+INSERT INTO chara (image,speak,type_id) VALUES(
+    '犬','ワン',3
+);
+
+INSERT INTO chara (image,speak,type_id) VALUES(
+    '犬','ワン',4
+);
+INSERT INTO chara (image,speak,type_id) VALUES(
+    '猫','ニャー',1
+);
+INSERT INTO chara (image,speak,type_id) VALUES(
     '猫','ニャー',2
+);
+INSERT INTO chara (image,speak,type_id) VALUES(
+    '猫','ニャー',3
+);
+INSERT INTO chara (image,speak,type_id) VALUES(
+    '猫','ニャー',4
 );
 SELECT * FROM chara;
 
@@ -283,26 +305,26 @@ SELECT * FROM chara;
 CREATE TABLE user (
     user_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     login_id VARCHAR(50) NOT NULL,
-    PW VARCHAR(50) NOT NULL CHECK (CHAR_LENGTH(pw)>=4),
+    pw VARCHAR(50) NOT NULL CHECK (CHAR_LENGTH(pw)>=4),
     chara_id INT DEFAULT 1,
     user_nickname VARCHAR(20) DEFAULT 'あなた',
     chara_nickname VARCHAR(20) DEFAULT '僕',
 FOREIGN KEY (chara_id) REFERENCES chara(chara_id)
 );
 
-INSERT INTO user (login_id,PW,chara_id) VALUES(
+INSERT INTO user (login_id,pw,chara_id) VALUES(
     'id',
     'yokoyamadaiki',
     1
 );
 
-INSERT INTO user (login_id,PW,chara_id) VALUES(
+INSERT INTO user (login_id,pw,chara_id) VALUES(
     'id2',
     'PW22',
     2
 );
 
-INSERT INTO user (login_id,PW,chara_id,user_nickname,chara_nickname) VALUES(
+INSERT INTO user (login_id,pw,chara_id,user_nickname,chara_nickname) VALUES(
     'id3',
     'PW333',
     2,
@@ -310,7 +332,7 @@ INSERT INTO user (login_id,PW,chara_id,user_nickname,chara_nickname) VALUES(
     'ニャンちゅう'
 );
 
-INSERT INTO user (login_id,PW,chara_id,user_nickname,chara_nickname) VALUES(
+INSERT INTO user (login_id,pw,chara_id,user_nickname,chara_nickname) VALUES(
     'id4',
     'PW444',
     1,
@@ -318,7 +340,7 @@ INSERT INTO user (login_id,PW,chara_id,user_nickname,chara_nickname) VALUES(
     'ハチ公'
 );
 
-INSERT INTO user (login_id,PW) VALUES(
+INSERT INTO user (login_id,pw) VALUES(
     'id5',
     'dendenmushi'
 );
@@ -349,52 +371,4 @@ INSERT INTO daily_mission (user_id,mission_id,daily,complete) VALUES(
 );
 
 SELECT * FROM daily_mission;
-
-/*実験的なSQL*/
-/*外部結合でのSELECT テーマとミッション*/
-SELECT theme.theme_name, mission_name FROM theme 
-LEFT JOIN mission
-on theme.theme_id=mission.theme_id;
-
-/*ユーザテーブルとキャラテーブルの結合*/
-SELECT user.user_id, user.user_nickname,user.chara_nickname,chara.image,chara.speak FROM user 
-LEFT JOIN chara
-on user.chara_id=chara.chara_id;
-
-SELECT u.user_id, u.user_nickname, u.chara_nickname,
-       c.image, c.speak
-FROM user AS u
-LEFT JOIN chara AS c
-  ON u.chara_id = c.chara_id;
-
-/*生活のテーマでミッションを選択する*/
-
-SELECT m.mission_name 
-            FROM mission AS m 
-            JOIN theme AS t 
-ON m.theme_id = t.theme_id 
-            WHERE t.theme_name='生活' ;
-
-/*生活テーマでランダムに三つのミッションを出す */
-SELECT mission_id,mission_name 
-FROM mission
-WHERE theme_id = 1
-ORDER BY RAND()
-LIMIT 3;
-/*勉強テーマでランダムに三つのミッションを出す */
-
-SELECT mission_id,mission_name 
-FROM mission
-WHERE theme_id =2 
-ORDER BY RAND()
-LIMIT 3;
-
-SELECT mission_id,mission_name 
-FROM mission
-WHERE theme_id =5
-ORDER BY RAND()
-LIMIT 3;
-
-
-
 

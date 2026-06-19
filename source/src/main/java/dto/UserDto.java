@@ -42,11 +42,11 @@ public class UserDto {
 		this.loginId = loginId;
 	}
 
-	public String getPw() {
+	public String getpw() {
 		return pw;
 	}
 
-	public void setPw(String pw) {
+	public void setpw(String pw) {
 		this.pw = pw;
 	}
 

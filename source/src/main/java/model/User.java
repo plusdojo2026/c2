@@ -7,7 +7,7 @@ public class User implements Serializable  {
 
 	private int userId;
 	private String loginId;
-	private String PW;
+	private String pw;
 	private int charaId;
 	private String userNickname;
 	private String charaNickname;
@@ -16,10 +16,10 @@ public class User implements Serializable  {
 	public User() {
 	}
 	//全項目コンストラクタ
-	public User(int userId,String loginId,String PW,int charaId,String userNickname,String charaNickname) {
+	public User(int userId,String loginId,String pw,int charaId,String userNickname,String charaNickname) {
 		this.userId = userId;
 		this.loginId = loginId;
-		this.PW = PW;
+		this.pw = pw;
 		this.charaId = charaId;
 		this.userNickname = userNickname;
 		this.charaNickname = charaNickname;
@@ -41,12 +41,12 @@ public class User implements Serializable  {
 		this.loginId = loginId;
 	}
 	
-	public String getPW() {
-		return PW;
+	public String getpw() {
+		return pw;
 	}
 	
-	public void setPW(String PW) {
-		this.PW = PW;
+	public void setpw(String pw) {
+		this.pw = pw;
 	}
 	
 	public int getCharaId() {
