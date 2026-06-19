@@ -53,5 +53,4 @@ public class CharaServlet extends HttpServlet {
 
 	        doGet(request, response);
 	    }
-
 }

@@ -31,14 +31,14 @@ public class NameServlet extends HttpServlet{
 		throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("login_id") == null) {
+		if (session.getAttribute("loginId") == null) {
 			response.sendRedirect(request.getContextPath() +"/LoginServlet");
 			return;
 		}
 		
 		//ログイン中のユーザIDを取得
-		int userId=(Integer)session.getAttribute("userId");	
-		
+		Integer userId = (Integer) session.getAttribute("userId");	
+
 		//DBから現在の呼び名を取得する
 		NameDAO nDao=new NameDAO();
 		UserDto user=nDao.selectByUserId(userId);
@@ -59,7 +59,7 @@ public class NameServlet extends HttpServlet{
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("login_id") == null) {
+		if (session.getAttribute("loginId") == null) {
 			response.sendRedirect(request.getContextPath() +"/LoginServlet");
 			return;
 		}
@@ -87,6 +87,10 @@ public class NameServlet extends HttpServlet{
 		}
 		
 		request.setAttribute("message",message);
+		
+		 // 更新後のデータを再取得する
+	    UserDto user = nDao.selectByUserId(userId);
+	    request.setAttribute("user", user);
 		
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/name.jsp");
