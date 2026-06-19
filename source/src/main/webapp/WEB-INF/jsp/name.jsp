@@ -28,7 +28,7 @@
 	<br><h3 class="name-info">新しくつけるニックネーム</h3>
 	 <div class="name-text">
     	<div>
-        	<label>キャラの名前を入力してください</label>
+        	<label>キャラの名前を入力してください</label><br>
         	<input type="text"
                name="charaNickname"
                value="${user.charaNickname}"
@@ -38,7 +38,7 @@
    		 <p class="arrow">⇄</p> 
 
     	<div>
-        	<label>あなたの呼び名を入力してください</label>
+        	<label>あなたの呼び名を入力してください</label><br>
         	<input type="text"
                name="userNickname"
                 value="${user.userNickname}"

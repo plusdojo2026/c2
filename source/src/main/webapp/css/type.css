@@ -9,21 +9,26 @@
 
 /*タイプボタン*/
 .type-button1, .type-button2, .type-button3, .type-button4{
-     color:#fff;
+     		color:#fff;
             width: 200px;
             height: 70px;
             font-size: 18px;
             cursor: pointer;
             border-radius: 30px;
             border: none;
+            cursor: pointer;
             transition: opacity 0.2s ease-out; 
             margin: 10px
 }
 
 /*ボタンの色*/
-.type-button1 {background-color:rgb(255, 179, 98);}
+.type-button1 {
+	background: linear-gradient(135deg, #ffb872, #ffd4a9);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);}
 
-.type-button2 {background-color:rgb(34, 20, 128);}        
+.type-button2 {
+	background: linear-gradient(135deg, #6250ff, #998eff);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);}        
 
 /*ボタンの動き*/
 .type-button1, .type-button2, .type-button3, .type-button4{

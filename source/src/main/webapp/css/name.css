@@ -36,11 +36,13 @@
 
 /*送信ボタン*/
 #name-submit{  
-    background-color:rgb(255, 171, 206);
+    background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);
     font-size: 30px;
     color:#fff;
     width: 200px;
     height: 70px;
+    cursor: pointer;
     border-radius: 30px;
     border: none;
 }
@@ -48,6 +50,16 @@
 /*送信ボタン真ん中に*/
 .name-submit{
     text-align: center;
+}
+
+/*ボタン　触ると動く設定*/
+.name-submit{
+	
+    transition: transform 0.2s ease-out; 
+}
+
+.name-submit:hover{
+    transform: scale(0.95); 
 }
 
 /*矢印の大きさ*/
