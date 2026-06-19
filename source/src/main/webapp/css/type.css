@@ -31,11 +31,11 @@
     box-shadow: 0 5px 15px rgba(255,170,190,0.35);}        
 
 /*ボタンの動き*/
-.type-button1, .type-button2, .type-button3, .type-button4{
+.type-button1, .type-button2, .type-button3, .type-button4,#backBtn{
     transition: transform 0.2s ease-out;
 }
 
-.type-button1:hover, .type-button2:hover, .type-button3:hover, .type-button4:hover {
+.type-button1:hover, .type-button2:hover, .type-button3:hover, .type-button4:hover,#backBtn:hover {
     transform: scale(0.95); 
 }
 
@@ -50,4 +50,18 @@
     text-align: center;
     margin: 0 auto;
     margin-top: 80px;
+}
+
+/*戻るボタン*/
+#backBtn{
+    background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);
+    font-size: 20px;   
+    color:#fff;
+    width: 100px;
+    height: 65px;
+    margin-left: 30px;
+    border-radius: 30px;
+    border: none; 
+    cursor: pointer;
 }

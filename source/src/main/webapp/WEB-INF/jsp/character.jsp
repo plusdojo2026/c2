@@ -17,7 +17,11 @@
     </div>
     
 	<div class="text-button">
-		<p class="self-introduction">自己紹介</p>
+		<p class="self-introduction"><br>
+        食いしん坊ないぬの男の子！<br>
+        チャームポイントはキリっとした眉毛とおやつがついてるバンダナ<br><br>
+        きみががんばっている姿を、<br>
+        いつも近くで応援しているよ！</p>
 	
 		 <div class="Button">   	
    			 <form action="${pageContext.request.contextPath}/CharaTransitionServlet"
@@ -36,7 +40,11 @@
         	</button></form>
         </div>
         	
-        	 <p class="self-introduction">自己紹介</p>  
+        	 <p class="self-introduction"><br>
+        マイペースなねこの女の子！<br>
+        チャームポイントは綺麗な三毛とハートがついてるバンダナ<br><br>
+        実はきみのがんばる姿が大好き<br>
+        いつもそっと応援しているよ！</p>  
 	</div>
 
 
@@ -47,6 +55,13 @@
     	<img src="<%=request.getContextPath()%>/images/cat.png"
          class="image-item">
          </div>
+         
+         <form action="${pageContext.request.contextPath}/HomeServlet"
+         	 method="get">
+        	<button id="backBtn" type="submit">
+            	<b>戻る</b>
+        	</button></form>
+         
 	
 </body>
 </html>

@@ -32,11 +32,25 @@
 
 
 /*２つのイラスト　触ると動く設定*/
-.dog-image,.cat-image{
+.dog-image,.cat-image,#backBtn{
 	
     transition: transform 0.2s ease-out; 
 }
 
-.dog-image:hover,.cat-image:hover{
+.dog-image:hover,.cat-image:hover,#backBtn:hover{
     transform: scale(0.95); 
+}
+
+/*戻るボタン*/
+#backBtn{
+    background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);
+    font-size: 20px;   
+    color:#fff;
+    width: 100px;
+    height: 65px;
+    margin-left: 30px;
+    border-radius: 30px;
+    border: none; 
+    cursor: pointer;
 }

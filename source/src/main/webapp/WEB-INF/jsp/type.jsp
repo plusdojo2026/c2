@@ -47,6 +47,11 @@
                 <p>夜型曇り：23時起床、15時就寝に近い生活の方が家にいる日</p>
         </div>
 	
+	 <form action="${pageContext.request.contextPath}/CharacterChangeServlet"
+         	 method="get">
+        	<button id="backBtn" type="submit">
+            	<b>戻る</b>
+        	</button></form>
 
 </body>
 </html>

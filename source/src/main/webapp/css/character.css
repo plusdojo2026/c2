@@ -23,11 +23,11 @@
 }
 
 /*ボタン動き*/
-#characterBtn,#nameBtn{
+#characterBtn,#nameBtn,#backBtn{
     transition: transform 0.2s ease-out;
 }
 
-#characterBtn:hover,#nameBtn:hover{
+#characterBtn:hover,#nameBtn:hover,#backBtn:hover{
     transform: scale(0.95); 
 }
 
@@ -47,8 +47,9 @@
 /*キャラの自己紹介*/
 .self-introduction{
     background-color: #f8f8f8;
-    padding: 10px;
-    width: 170px;
+    font-size: 16px;
+    padding: 15px;
+    width: 250px;
     height: 200px;
     border-radius: 30px;
 }
@@ -58,4 +59,18 @@
     justify-content: center;
     display: flex; 
     gap: 50px; 
+}
+
+/*戻るボタン*/
+#backBtn{
+    background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);
+    font-size: 20px;   
+    color:#fff;
+    width: 100px;
+    height: 65px;
+    margin-left: 30px;
+    border-radius: 30px;
+    border: none; 
+    cursor: pointer;
 }
