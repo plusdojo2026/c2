@@ -17,19 +17,23 @@
 
 /*犬か猫か選ばせるボタン*/
 #animal-submit{  
-    background-color:rgb(255, 171, 206);
+    background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);
     font-size: 40px;
-    color:#fff;
+    color: #ffffff;
+    cursor: pointer;
     width: 200px;
     height: 70px;
     border-radius: 30px;
     border: none;
+    
 }
 
 
 
 /*２つのイラスト　触ると動く設定*/
 .dog-image,.cat-image{
+	
     transition: transform 0.2s ease-out; 
 }
 

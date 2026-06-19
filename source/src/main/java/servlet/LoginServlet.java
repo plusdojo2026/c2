@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
 			request.setAttribute("loginError", true);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 
 			dispatcher.forward(request, response);
 		}

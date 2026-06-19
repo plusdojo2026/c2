@@ -15,21 +15,28 @@
     	<p>犬と猫の中から好きなキャラを選んでね</p>
     </div>
     
+    
+    
     <div class="whole-image">
     	<div class="dog-image">
     	 <img src="<%=request.getContextPath()%>/images/dog.png"
              width="200">
-             
-    		<button type="submit" name="charaId"value="犬"id="animal-submit">
-        
-    </button></div>
+             <br> 
+             <form action="${pageContext.request.contextPath}/CharaChangeTransitionServlet"
+          		method="post">
+    		<button type="submit" name="dog"value="犬"id="animal-submit">
+        	犬
+   			 </button></form></div>
 
 	 <div class="cat-image">
      		<img src="<%=request.getContextPath()%>/images/cat.png"
              width="200">
-            <button type="submit" name="charaId" value="猫" id="animal-submit">
-       
-    </button></div></div>
+             <br> 
+             <form action="${pageContext.request.contextPath}/CharaChangeTransitionServlet"
+          		method="post">
+            <button type="submit" name="cat" value="猫" id="animal-submit">
+       		猫
+    		</button></form></div></div>
 
 </body>
 </html>

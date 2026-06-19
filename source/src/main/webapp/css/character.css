@@ -10,14 +10,25 @@
 
 /*キャラ選択ボタン*/
 #characterBtn,#nameBtn{
-    font-size: 30px;
-    background-color:rgb(255, 171, 206);
+    background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);font-size: 30px;   
     color:#fff;
     width: 200px;
     height: 130px;
     border-radius: 30px;
     border: none; 
     margin-top: 50px;
+    cursor: pointer;
+    
+}
+
+/*ボタン動き*/
+#characterBtn,#nameBtn{
+    transition: transform 0.2s ease-out;
+}
+
+#characterBtn:hover,#nameBtn:hover{
+    transform: scale(0.95); 
 }
 
 /*イラスト２つの大きさ*/
