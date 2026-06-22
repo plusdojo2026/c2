@@ -69,7 +69,7 @@ public class TypeServlet extends HttpServlet {
     cDAO.updateType(user.getCharaId(),typeId);
 
     // 設定画面へ戻る
-    response.sendRedirect(request.getContextPath()+ "/CharaServlet");
+    response.sendRedirect(request.getContextPath()+ "/HomeServlet");
 	}
 }
 
