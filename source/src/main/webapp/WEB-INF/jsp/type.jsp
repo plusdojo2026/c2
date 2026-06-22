@@ -27,7 +27,7 @@
 		<p>4つの生活タイプの中からあなたに合うものを選んでね</p>
 
 
-		<form action="TypeSelectServlet" method="get">
+		<form action="HomeServlet" method="get">
 
 			<button type="submit" name="type" value="morning_sunny"
 				class="type-button1">朝型晴れ</button>
