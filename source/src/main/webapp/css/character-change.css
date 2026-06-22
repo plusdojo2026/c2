@@ -13,22 +13,6 @@
     text-align: center;
 }
 
-.dotted-side {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #333;
-}
-
-.dotted-side::before,
-.dotted-side::after {
-    content: "";
-    flex-grow: 1;
-    border-bottom: 3px dashed #ffb8cc; /* ピンクの点線 */
-    margin: 0 15px; /* 文字と点線の間のスキマ */
-    max-width: 50px; /* 点線の全体の長さ */
-}
-
 /*イラストの位置*/
 .whole-image{
     justify-content: center;
