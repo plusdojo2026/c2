@@ -1,53 +1,104 @@
 @charset "UTF-8";
 
-body{
-    font-family: "Segoe UI", sans-serif;
-    text-align:center;
-    background:#fff5f8;
-    color:#333;
+body {
+	font-family: "Segoe UI", sans-serif;
+	text-align: center;
+	background: linear-gradient(to bottom, #fff8fb, #ffeef5);
+	color: #555;
+	margin: 0;
 }
 
-h2{ color:#d46a8c; }
-
-table{
-    border-collapse:collapse;
-    margin:auto;
-    background:#fff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+/* タイトル */
+h2 {
+	color: #d46a8c;
+	font-size: 32px;
+	margin-bottom: 25px;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-th,td{
-    border:1px solid #f3c6d6;
-    width:80px;
-    height:80px;
-    vertical-align:top;
+/* カレンダー全体 */
+table {
+	border-collapse: separate;
+	border-spacing: 5px;
+	margin: auto;
+	padding: 5px;
+	background: #ffffff;
+	border-radius: 25px;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
 }
 
-th{
-    background:#ffd6e7;
-    color:#6b2c3d;
+/* 曜日 */
+th {
+	background: linear-gradient(135deg, #ffd6e7, #ffc1d8);
+	color: #6b2c3d;
+	border: none;
+	width: 90px;
+	height: 55px;
+	border-radius: 15px;
 }
 
-.day{
-    font-weight:bold;
+/* 日付セル */
+td {
+	background: #fffdfd;
+	border: none;
+	width: 90px;
+	height: 90px;
+	border-radius: 15px;
+	transition: 0.2s;
 }
 
-.mark{
-    font-size:22px;
-    margin-top:10px;
+
+/* 日付 */
+.day {
+	font-weight: bold;
+	font-size: 15px;
+	color: #666;
+	margin-top: 5px;
 }
 
-.good{ color:#e84a6a; font-weight:bold; }
-.middle{ color:#4caf50; font-weight:bold; }
-.bad{ color:#4a90e2; font-weight:bold; }
+/* 記号 */
+.mark {
+	font-size: 28px;
+	margin-top: 10px;
+}
 
-input[type="submit"]{
-    margin-top:20px;
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-    background:#ff8fb1;
-    color:white;
+/* 評価 */
+.good {
+	color: #ff6b81;
+	font-weight: bold;
+}
+
+.middle {
+	color: #62c462;
+	font-weight: bold;
+}
+
+.bad {
+	color: #6aa8ff;
+	font-weight: bold;
+}
+
+/* ボタン */
+input[type="submit"] {
+	background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+	border: 3px solid #ffd6e7;
+	border-radius: 30px;
+	padding: 12px 30px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+	cursor: pointer;
+	margin-top: 5px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+	transition: 0.2s;
+}
+
+input[type="submit"]:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+}
+
+input[type="submit"]:active {
+	transform: scale(0.96);
 }
