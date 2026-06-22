@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+body{
+    font-family: "Segoe UI", sans-serif;
+    text-align:center;
+    background:#fff5f8;
+    color:#333;
+}
+
+h2{ color:#d46a8c; }
+
+table{
+    border-collapse:collapse;
+    margin:auto;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+th,td{
+    border:1px solid #f3c6d6;
+    width:80px;
+    height:80px;
+    vertical-align:top;
+}
+
+th{
+    background:#ffd6e7;
+    color:#6b2c3d;
+}
+
+.day{
+    font-weight:bold;
+}
+
+.mark{
+    font-size:22px;
+    margin-top:10px;
+}
+
+.good{ color:#e84a6a; font-weight:bold; }
+.middle{ color:#4caf50; font-weight:bold; }
+.bad{ color:#4a90e2; font-weight:bold; }
+
+input[type="submit"]{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#ff8fb1;
+    color:white;
+}
