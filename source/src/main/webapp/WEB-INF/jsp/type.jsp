@@ -27,19 +27,16 @@
 		<p>4つの生活タイプの中からあなたに合うものを選んでね</p>
 
 
-		<form action="HomeServlet" method="get">
+		<form action="${pageContext.request.contextPath}/TypeServlet"
+			method="post">
 
-			<button type="submit" name="type" value="morning_sunny"
-				class="type-button1">朝型晴れ</button>
+			<button type="submit" name="typeId" value="1">朝型晴れ</button>
 
-			<button type="submit" name="type" value="morning_cloudy"
-				class="type-button1">朝型曇り</button>
+			<button type="submit" name="typeId" value="2">朝型曇り</button>
 
-			<button type="submit" name="type" value="night_sunny"
-				class="type-button2">夜型晴れ</button>
+			<button type="submit" name="typeId" value="3">夜型晴れ</button>
 
-			<button type="submit" name="type" value="night_cloudy"
-				class="type-button2">夜型曇り</button>
+			<button type="submit" name="typeId" value="4">夜型曇り</button>
 
 		</form>
 	</div>
