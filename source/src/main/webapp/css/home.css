@@ -148,13 +148,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: -20px;
 }
 
 .right-area {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
 }
 
 /* コメント部分 */
