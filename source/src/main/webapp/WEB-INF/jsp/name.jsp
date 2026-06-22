@@ -16,7 +16,7 @@
         	</button></form>
 
 	<div class="name-info">
-    	<br><br>
+    	
     	<h1>名前の変更</h1>
     	<p>キャラクターとあなたのあだ名を教えてね！</p><br>
     </div>

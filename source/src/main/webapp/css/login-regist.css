@@ -7,7 +7,7 @@
 
 .top{
     font-size: 30px;
-    border-bottom: 2px solid rgb(187, 187, 188);
+    border-bottom: 4px solid rgba(255,170,190,0.35);
     width: 1200px; 
     padding-bottom: 5px;
 }
@@ -16,15 +16,18 @@
     font-size: 15px; 
     padding: 10px;       
     width: 400px; 
-    border-radius: 30px;      
+    border-radius:30px;      
+    border:1px solid #ffb8cc; 
 }
 
 .submit{
-    background-color: black;
+  	background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);
     color: #fff;
     padding: 15px;       
     width: 150px; 
     border-radius: 30px;
+    border: none;
 }
 
 /*リンク触った時など　まだ色未定で適当*/

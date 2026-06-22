@@ -16,7 +16,7 @@
         	</button></form>
 
 	<div class="chara-info">
-    	<br><br>
+    
     	<h1>キャラクターの選択</h1>
     	<p>犬と猫の中から好きなキャラを選んでね</p>
     </div>

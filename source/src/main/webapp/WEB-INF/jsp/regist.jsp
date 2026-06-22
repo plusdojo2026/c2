@@ -25,7 +25,7 @@
         	<input type="password" id="pw" name="pw">
     	</p>
 
-   			 <button type="submit">新規登録</button>
+   			 <button type="submit" class="submit">新規登録</button>
 
 		</form>
 	</div>
