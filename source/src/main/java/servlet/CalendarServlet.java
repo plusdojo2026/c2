@@ -19,6 +19,7 @@ import model.User;
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
 
+    @Override
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
@@ -29,6 +30,16 @@ public class CalendarServlet extends HttpServlet {
 
         User user =
                 (User) session.getAttribute("loginUser");
+
+        // ログインチェック
+        if (user == null) {
+
+            response.sendRedirect(
+                    request.getContextPath()
+                    + "/LoginServlet");
+
+            return;
+        }
 
         int userId =
                 user.getUserId();
@@ -45,7 +56,7 @@ public class CalendarServlet extends HttpServlet {
         DailyDAO dao =
                 new DailyDAO();
 
-        Map<Integer,Integer> monthlyResult =
+        Map<Integer, Integer> monthlyResult =
                 dao.getMonthlyAchievement(
                         userId,
                         year,

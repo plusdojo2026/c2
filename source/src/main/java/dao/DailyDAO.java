@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DailyDAO {
 
@@ -157,6 +159,57 @@ public class DailyDAO {
 		}
 
 		return count;
+	}
+	
+	// 月間達成状況取得
+	public Map<Integer, Integer> getMonthlyAchievement(
+	        int userId,
+	        int year,
+	        int month) {
+
+	    Map<Integer, Integer> result =
+	            new HashMap<>();
+
+	    String sql =
+	            "SELECT DAY(daily) AS day, " +
+	            "COUNT(*) AS cnt " +
+	            "FROM daily_mission " +
+	            "WHERE user_id = ? " +
+	            "AND YEAR(daily) = ? " +
+	            "AND MONTH(daily) = ? " +
+	            "AND complete = 1 " +
+	            "GROUP BY daily";
+
+	    try (Connection con =
+	            DriverManager.getConnection(
+	                    URL, USER, PASS);
+
+	         PreparedStatement ps =
+	            con.prepareStatement(sql)) {
+
+	        ps.setInt(1, userId);
+	        ps.setInt(2, year);
+	        ps.setInt(3, month);
+
+	        ResultSet rs =
+	                ps.executeQuery();
+
+	        while (rs.next()) {
+
+	            int day =
+	                    rs.getInt("day");
+
+	            int count =
+	                    rs.getInt("cnt");
+
+	            result.put(day, count);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return result;
 	}
 	
 }
