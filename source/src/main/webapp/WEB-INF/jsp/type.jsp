@@ -27,7 +27,7 @@
 		<p>4つの生活タイプの中からあなたに合うものを選んでね</p>
 
 
-		<form action="TypeSelectServlet" method="post">
+		<form action="TypeSelectServlet" method="get">
 
 			<button type="submit" name="type" value="morning_sunny"
 				class="type-button1">朝型晴れ</button>
@@ -51,8 +51,6 @@
 		<p>夜型晴れ：23時起床、15時就寝に近い生活の方が外出する日</p>
 		<p>夜型曇り：23時起床、15時就寝に近い生活の方が家にいる日</p>
 	</div>
-
-
 
 </body>
 </html>

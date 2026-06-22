@@ -9,6 +9,11 @@
 </head>
 <body>
 
+  <form action="${pageContext.request.contextPath}/HomeServlet"
+         	 method="get">
+        	<button id="backBtn" type="submit">
+            	<b>戻る</b>
+        	</button></form>
 
 	<div class="chara-info">
     	<br><br>
@@ -55,12 +60,6 @@
     	<img src="<%=request.getContextPath()%>/images/cat.png"
          class="image-item">
          </div>
-         
-         <form action="${pageContext.request.contextPath}/HomeServlet"
-         	 method="get">
-        	<button id="backBtn" type="submit">
-            	<b>戻る</b>
-        	</button></form>
          
 	
 </body>

@@ -67,3 +67,16 @@
     font-size: 40px;
     margin-top: 20px;
 }
+
+/*戻るボタン*/
+#backBtn{
+    background: linear-gradient(135deg, #ffb8cc, #ffd9e7);
+	border: 3px solid #ffd6e7;
+	border-radius: 20px;
+	padding: 10px 20px;
+	font-size: 18px;
+	font-weight: bold;
+	color:#fff;
+	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+	transition: 0.2s;}

@@ -9,6 +9,12 @@
 </head>
 <body>
 
+ <form action="${pageContext.request.contextPath}/CharaServlet"
+         	 method="get">
+        	<button id="backBtn" type="submit">
+            	<b>戻る</b>
+        	</button></form>
+
 	<div class="name-info">
     	<br><br>
     	<h1>名前の変更</h1>
@@ -55,12 +61,5 @@
 
 <p>${message}</p>
 	 
-         <form action="${pageContext.request.contextPath}/CharaServlet"
-         	 method="get">
-        	<button id="backBtn" type="submit">
-            	<b>戻る</b>
-        	</button></form>
-<p><a href="/c2/HomeServlet">ホーム</a></p>
-
 </body>
 </html>
