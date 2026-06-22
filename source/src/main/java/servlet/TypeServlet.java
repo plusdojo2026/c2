@@ -17,59 +17,77 @@ import model.User;
 
 @WebServlet("/TypeServlet")
 public class TypeServlet extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request,HttpServletResponse response)
-            throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
+
+		// ログインチェック
 		if (session.getAttribute("loginId") == null) {
-			response.sendRedirect("/c2/LoginServlet");
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
 			return;
 		}
-		Integer userId = (Integer)session.getAttribute("userId");
+
+		Integer userId = (Integer) session.getAttribute("userId");
 
 		UserDAO uDAO = new UserDAO();
 		User user = uDAO.findByUserId(userId);
 
-        // 現在のタイプ設定取得
-        CharaDAO cDAO = new CharaDAO();
-        Chara chara = cDAO.findByCharaId(user.getCharaId());
+		// 現在のキャラ情報取得
+		CharaDAO cDAO = new CharaDAO();
+		Chara chara = cDAO.findByCharaId(user.getCharaId());
 
-        // 取得した情報をリクエストスコープに格納する
-        request.setAttribute("type", chara.getTypeId());
+		request.setAttribute("type", chara.getTypeId());
 
-        // タイプページへフォワードする
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher("/WEB-INF/jsp/type.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/type.jsp");
 
-        dispatcher.forward(request, response);
+		dispatcher.forward(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+
+		// ログインチェック
+		if (session.getAttribute("loginId") == null) {
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
+			return;
 		}
-	
 
-    protected void doPost(HttpServletRequest request,HttpServletResponse response)
-        throws ServletException, IOException {
-	// もしもログインしていなかったらログインサーブレットにリダイレクトする
-			HttpSession session = request.getSession();
-			if (session.getAttribute("loginId") == null) {
-				response.sendRedirect("/webapp/LoginServlet");
-				return;
-			}
-	Integer userId = (Integer)session.getAttribute("userId");
+		Integer userId = (Integer) session.getAttribute("userId");
 
-	UserDAO uDAO = new UserDAO();
-	User user = uDAO.findByUserId(userId);
+		UserDAO uDAO = new UserDAO();
+		User user = uDAO.findByUserId(userId);
 
-    request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
-    // フォームから取得
-    int typeId = Integer.parseInt (request.getParameter("typeId"));
+		// 選択されたタイプ(1～4)
+		int typeId = Integer.parseInt(request.getParameter("typeId"));
 
-    // 更新処理
-    CharaDAO cDAO = new CharaDAO();
-    cDAO.updateType(user.getCharaId(),typeId);
+		// 現在のキャラID取得
 
-    // 設定画面へ戻る
-    response.sendRedirect(request.getContextPath()+ "/HomeServlet");
+		int newCharaId;
+
+		// 犬(1～4)
+		String animal = (String) session.getAttribute("animal");
+
+		if ("cat".equals(animal)) {
+			newCharaId = typeId + 4;
+		} else {
+			newCharaId = typeId;
+		}
+
+		// userテーブルのchara_id更新
+		CharaDAO cDAO = new CharaDAO();
+		cDAO.update(newCharaId, userId);
+
+		// ホーム画面へ
+		response.sendRedirect(request.getContextPath() + "/HomeServlet");
 	}
 }
-

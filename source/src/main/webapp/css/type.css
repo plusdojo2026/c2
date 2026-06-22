@@ -2,6 +2,16 @@
 
 /* タイプ選択 */
 
+/* ヘッダー */
+.top-decoration {
+	height: 40px;
+	background: linear-gradient(135deg, #FFB8CC, #FFD9E7); border-radius :
+	0 0 20px 20px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+	border-radius: 0 0 20px 20px;
+}
+
+
 /*上の説明文*/
 .type-info{
     text-align: center;
@@ -27,6 +37,14 @@
     box-shadow: 0 5px 15px rgba(255,170,190,0.35);}
 
 .type-button2 {
+	background: linear-gradient(135deg, #ffb872, #ffd4a9);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);}
+
+.type-button3 {
+	background: linear-gradient(135deg, #6250ff, #998eff);
+    box-shadow: 0 5px 15px rgba(255,170,190,0.35);}  
+
+.type-button4 {
 	background: linear-gradient(135deg, #6250ff, #998eff);
     box-shadow: 0 5px 15px rgba(255,170,190,0.35);}        
 

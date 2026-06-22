@@ -23,8 +23,6 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("HomeServlet実行");
-
 		HttpSession session = request.getSession();
 
 		Integer userId = (Integer) session.getAttribute("userId");
@@ -55,10 +53,7 @@ public class HomeServlet extends HttpServlet {
 		// キャラ取得
 		UserDAO userDao = new UserDAO();
 		int charaId = userDao.getCharaId(userId);
-		int typeId = userDao.getTypeId(charaId);
-
-		System.out.println("charaId=" + charaId);
-		System.out.println("typeId=" + typeId);
+		int typeId = userDao.getTypeId(userId);
 
 		request.setAttribute("charaId", charaId);
 		request.setAttribute("typeId", typeId);
@@ -104,8 +99,6 @@ public class HomeServlet extends HttpServlet {
 
 		// 達成数取得
 		int completeCount = dao.getTodayCompleteCount(userId);
-
-		System.out.println("達成数=" + completeCount);
 
 		if (completeCount >= 3) {
 
@@ -177,9 +170,6 @@ public class HomeServlet extends HttpServlet {
 		// 背景画像
 		String backgroundImage;
 
-		System.out.println("charaId=" + charaId);
-		System.out.println("typeId=" + typeId);
-
 		boolean outsideType = (typeId == 1 || typeId == 3);
 		boolean daytime = (hour >= 6 && hour < 18);
 
@@ -197,8 +187,8 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("backgroundImage", backgroundImage);
 
 		System.out.println("backgroundImage=" + backgroundImage);
-		boolean isDog = (charaId == 1 || charaId == 3);
-		boolean isCat = (charaId == 2 || charaId == 4);
+		boolean isDog = (charaId >= 1 && charaId <= 4);
+		boolean isCat = (charaId >= 5 && charaId <= 8);
 
 		System.out.println("typeId=" + typeId);
 		System.out.println("backgroundImage=" + backgroundImage);

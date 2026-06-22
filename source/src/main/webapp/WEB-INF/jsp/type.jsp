@@ -11,6 +11,7 @@
 
 </head>
 <body>
+	<div class="top-decoration"></div>
 
 	<form
 		action="${pageContext.request.contextPath}/CharacterChangeServlet"
@@ -30,13 +31,17 @@
 		<form action="${pageContext.request.contextPath}/TypeServlet"
 			method="post">
 
-			<button type="submit" name="typeId" value="1">朝型晴れ</button>
+			<button class="type-button1" type="submit" name="typeId" value="1">
+				朝型晴れ</button>
 
-			<button type="submit" name="typeId" value="2">朝型曇り</button>
+			<button class="type-button2" type="submit" name="typeId" value="2">
+				朝型曇り</button>
 
-			<button type="submit" name="typeId" value="3">夜型晴れ</button>
+			<button class="type-button3" type="submit" name="typeId" value="3">
+				夜型晴れ</button>
 
-			<button type="submit" name="typeId" value="4">夜型曇り</button>
+			<button class="type-button4" type="submit" name="typeId" value="4">
+				夜型曇り</button>
 
 		</form>
 	</div>
