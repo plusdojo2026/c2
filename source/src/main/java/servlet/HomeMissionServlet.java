@@ -16,64 +16,57 @@ import dao.UserDAO;
 @WebServlet("/HomeMissionServlet")
 public class HomeMissionServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
-        Integer userId =
-                (Integer) session.getAttribute("userId");
+		Integer userId = (Integer) session.getAttribute("userId");
 
-        UserDAO userDao = new UserDAO();
+		UserDAO userDao = new UserDAO();
 
-        int charaId =
-                userDao.getCharaId(userId);
+		int charaId = userDao.getCharaId(userId);
 
-        String charaImage;
+		String charaImage;
 
-        if (charaId == 1 || charaId == 3) {
-            charaImage = "dog.png";
-        } else {
-            charaImage = "cat.png";
-        }
+		if (charaId == 1 || charaId == 3) {
+			charaImage = "dog.png";
+		} else {
+			charaImage = "cat.png";
+		}
 
-        // ランダムコメント
-        String[] comments = {
-                "今日はどんなミッションにする？",
-                "一緒に頑張ろう！",
-                "気になるテーマを選んでね！",
-                "無理せずできそうなものを選ぼう！",
-                "今日の目標を決めよう！",
-                "小さな一歩が大切だよ！",
-                "どれにするかワクワクするね！",
-                "君ならきっとできる！"
-        };
+		// ランダムコメント
+		String[] comments = { "今日はどんなミッションにする", "一緒に頑張ろう", "気になるテーマを選んで", "無理せずできそうなものを選ぼう", "今日の目標を決めよう",
+				"小さな一歩が大切だ", "どれにするかワクワクする", "君ならきっとできる" };
 
-        Random random = new Random();
+		Random random = new Random();
 
-        String comment =
-                comments[random.nextInt(comments.length)];
+		String comment = comments[random.nextInt(comments.length)];
 
-        request.setAttribute("comment", comment);
-        request.setAttribute("charaId", charaId);
-        request.setAttribute("charaImage", charaImage);
+		if (charaId >= 1 && charaId <= 4) {
+			String[] tails = { "ワン！", "ワン♪", "ワンワン！" };
+			comment += tails[random.nextInt(tails.length)];
+		} else if (charaId >= 5 && charaId <= 6) {
+			String[] tails = { "ニャー！", "ニャー♪", "ニャーニャー！" };
+			comment += tails[random.nextInt(tails.length)];
+		}
 
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher(
-                        "/WEB-INF/jsp/mission.jsp");
+		request.setAttribute("comment", comment);
+		request.setAttribute("charaId", charaId);
+		request.setAttribute("charaImage", charaImage);
 
-        dispatcher.forward(request, response);
-    }
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mission.jsp");
 
-    @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
+		dispatcher.forward(request, response);
+	}
 
-        doPost(request, response);
-    }
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doPost(request, response);
+	}
 }

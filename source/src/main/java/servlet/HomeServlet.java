@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Random;
 
@@ -153,12 +154,29 @@ public class HomeServlet extends HttpServlet {
 		}
 
 		// 時間帯による画像変更
+		// 現在日時
 		LocalTime now = LocalTime.now();
 		int hour = now.getHour();
 
+		// 現在月
+		int month = LocalDate.now().getMonthValue();
+
+		// 季節判定
+		String season;
+
+		if (month >= 3 && month <= 5) {
+			season = "spring";
+		} else if (month >= 6 && month <= 8) {
+			season = "summer";
+		} else if (month >= 9 && month <= 11) {
+			season = "autumn";
+		} else {
+			season = "winter";
+		}
+
 		// 背景画像
 		String backgroundImage;
-		
+
 		System.out.println("charaId=" + charaId);
 		System.out.println("typeId=" + typeId);
 
@@ -166,15 +184,22 @@ public class HomeServlet extends HttpServlet {
 		boolean daytime = (hour >= 6 && hour < 18);
 
 		if (outsideType) {
-			backgroundImage = daytime ? "outside_noon.png" : "outside_night.png";
+
+			// 外背景
+			backgroundImage = "outside1_" + season + (daytime ? "_noon.png" : "_night.png");
+
 		} else {
-			backgroundImage = daytime ? "home1_noon.png" : "home1_night.png";
+
+			// 部屋背景
+			backgroundImage = "home1_" + season + (daytime ? "_noon.png" : "_night.png");
 		}
 
 		request.setAttribute("backgroundImage", backgroundImage);
+
+		System.out.println("backgroundImage=" + backgroundImage);
 		boolean isDog = (charaId == 1 || charaId == 3);
 		boolean isCat = (charaId == 2 || charaId == 4);
-		
+
 		System.out.println("typeId=" + typeId);
 		System.out.println("backgroundImage=" + backgroundImage);
 
