@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<div class="top-decoration"></div>
  <form action="${pageContext.request.contextPath}/CharaServlet"
          	 method="get">
         	<button id="backBtn" type="submit">
@@ -54,7 +55,7 @@
 
 		<div class="name-submit">
      		<button type="submit"  id="name-submit">
-        		登録する
+        		<b>登録する</b>
      		</button>
     	</div>
 	</form>
