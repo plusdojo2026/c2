@@ -14,7 +14,7 @@
 			<b>ログイン</b>
 		</p>
 
-		<form action="${pageContext.request.contextPath}/LoginServlet"
+		<form id=login action="${pageContext.request.contextPath}/LoginServlet"
 			method="post">
 
 			<p>
@@ -27,14 +27,31 @@
 					id="pw" name="pw">
 			</p>
 
-			<button type="submit" class="submit">ログイン</button>
-
-		</form>
-
+			<button type="submit" name="login" class="submit">ログイン</button>
+			 <span style=color:red><span id="msg"></span></span>
+			</form>	
 		<div class="nav">
 			<a href="${pageContext.request.contextPath}/RegistServlet">
 				新規登録はこちら </a>
 		</div>
+		  
+
 	</div>
+	
+	<script>
+	'use strict'
+	document.getElementById('login').onsubmit = function(event) {
+    let id = document.getElementById('login').elements['user_id'].value;
+    let pw = document.getElementById('login').elements['pw'].value;
+
+    if (id === '' || pw === '') {
+        document.getElementById('msg').textContent =
+            'ログインIDとパスワードを入力してください。';
+        event.preventDefault();
+    }
+}
+	</script>
+	<!-- JavaScript（ここまで） -->
+
 </body>
 </html>
