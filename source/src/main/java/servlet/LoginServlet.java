@@ -11,85 +11,66 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
-import model.User;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        System.out.println("LoginServlet開始");
+		System.out.println("LoginServlet開始");
 
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher(
-                        "/WEB-INF/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 
-        dispatcher.forward(request, response);
-    }
+			dispatcher.forward(request, response);
+	}
 
-    @Override
-    protected void doPost(
-            HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        System.out.println("★★★★ doPost開始 ★★★★");
+		System.out.println("★★★★ doPost開始 ★★★★");
 
-        request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
-        String loginId =
-                request.getParameter("user_id");
+		String loginId = request.getParameter("user_id");
 
-        String pw =
-                request.getParameter("pw");
+		String pw = request.getParameter("pw");
 
-        System.out.println("loginId=" + loginId);
-        System.out.println("pw=" + pw);
+		System.out.println("loginId=" + loginId);
+		System.out.println("pw=" + pw);
 
-        UserDAO dao = new UserDAO();
+		UserDAO dao = new UserDAO();
 
-        boolean ok =
-                dao.isLoginOK(loginId, pw);
+		boolean ok = dao.isLoginOK(loginId, pw);
 
-        System.out.println("isLoginOK=" + ok);
+		System.out.println("isLoginOK=" + ok);
 
-        if (ok) {
+		if (ok) {
 
-            System.out.println("ログイン成功");
+			System.out.println("ログイン成功");
 
-            int userId =
-                    dao.getUserId(loginId);
+			int userId = dao.getUserId(loginId);
 
-            HttpSession session =
-                    request.getSession();
+			HttpSession session = request.getSession();
 
-            User user = new User();
-            user.setUserId(userId);
-            user.setLoginId(loginId);
+			session.setAttribute("userId", userId);
+			session.setAttribute("loginId", loginId);
 
-            session.setAttribute("loginUser", user);
+			response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
-            response.sendRedirect(
-                    request.getContextPath()
-                    + "/HomeServlet");
+		} else {
 
-        } else {
+			System.out.println("ログイン失敗");
 
-            System.out.println("ログイン失敗");
+			request.setAttribute("loginError", true);
 
-            request.setAttribute("loginError", true);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 
-            RequestDispatcher dispatcher =
-                    request.getRequestDispatcher(
-                            "/WEB-INF/jsp/login.jsp");
-
-            dispatcher.forward(request, response);
-        }
-    }
+			dispatcher.forward(request, response);
+		}
+	}
 }

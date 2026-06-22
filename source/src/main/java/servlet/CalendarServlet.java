@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DailyDAO;
-import model.User;
 
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
@@ -28,11 +27,11 @@ public class CalendarServlet extends HttpServlet {
         HttpSession session =
                 request.getSession();
 
-        User user =
-                (User) session.getAttribute("loginUser");
+        Integer userId =
+                (Integer) session.getAttribute("userId");
 
         // ログインチェック
-        if (user == null) {
+        if (userId == null) {
 
             response.sendRedirect(
                     request.getContextPath()
@@ -41,9 +40,7 @@ public class CalendarServlet extends HttpServlet {
             return;
         }
 
-        int userId =
-                user.getUserId();
-
+        
         LocalDate today =
                 LocalDate.now();
 
