@@ -16,7 +16,7 @@
 	 
 	 	<div class="box-outer">
         <div class="box-inner">
-			<form action="${pageContext.request.contextPath}/RegistServlet" method="post">
+			<form  id=regist action="${pageContext.request.contextPath}/RegistServlet" method="post">
 
     	<p>
         	<label for="id">ユーザID</label><br>
@@ -29,9 +29,24 @@
     	</p>
 
    			 <button type="submit" class="submit">新規登録</button>
+   			 <span style=color:red><span id="msg"></span></span>
 
 		</form>
 	</div></div></div>
+	<script>
+	'use strict'
+	document.getElementById('regist').onsubmit = function(event) {
+    let id = document.getElementById('regist').elements['id'].value;
+    let pw = document.getElementById('regist').elements['pw'].value;
+
+    if (id === '' || pw === '') {
+        document.getElementById('msg').textContent =
+            'ログインIDとパスワードを両方登録してください。';
+        event.preventDefault();
+    }
+}
+
+	</script>
 
 </body>
 </html>
