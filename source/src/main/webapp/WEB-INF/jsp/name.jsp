@@ -54,6 +54,12 @@
 	</form>
 
 <p>${message}</p>
+	 
+         <form action="${pageContext.request.contextPath}/CharaServlet"
+         	 method="get">
+        	<button id="backBtn" type="submit">
+            	<b>戻る</b>
+        	</button></form>
 <p><a href="/c2/HomeServlet">ホーム</a></p>
 
 </body>

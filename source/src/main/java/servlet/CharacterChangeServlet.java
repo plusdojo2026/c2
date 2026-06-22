@@ -29,7 +29,7 @@ public class CharacterChangeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("login_id") == null) {
+		if (session.getAttribute("loginId") == null) {
 		response.sendRedirect("/c2/LoginServlet");
 		return;
 		}
@@ -58,7 +58,7 @@ public class CharacterChangeServlet extends HttpServlet {
 		
 		//2 ログイン中のユーザIDを取得する。
 		HttpSession session = request.getSession();
-		String user_id=(String)session.getAttribute("user_id");
+		String user_id=(String)session.getAttribute("userId");
 		
 		//3　もしボタンに書かれてる文字が犬なら、テーブルの項目charaidを1に更新
 	    //  もしボタンに書かれている文字が猫なら、テーブルの項目charaidを2に更新

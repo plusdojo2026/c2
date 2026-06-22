@@ -22,7 +22,7 @@ public class NameTestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	
 			throws ServletException, IOException {
-		// ★ 改善案：本番と同じように session に userId を入れる
+		//データを入れる
         request.getSession().setAttribute("userId", 1);
         		
 		UserDto user = new UserDto(1,"サザエさん","タマ");

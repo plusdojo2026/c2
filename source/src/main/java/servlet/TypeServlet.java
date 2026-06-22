@@ -22,11 +22,11 @@ public class TypeServlet extends HttpServlet {
             throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("login_id") == null) {
+		if (session.getAttribute("loginId") == null) {
 			response.sendRedirect("/c2/LoginServlet");
 			return;
 		}
-		Integer userId = (Integer)session.getAttribute("user_id");
+		Integer userId = (Integer)session.getAttribute("userId");
 
 		UserDAO uDAO = new UserDAO();
 		User user = uDAO.findByUserId(userId);
@@ -50,11 +50,11 @@ public class TypeServlet extends HttpServlet {
         throws ServletException, IOException {
 	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
-			if (session.getAttribute("login_id") == null) {
+			if (session.getAttribute("loginId") == null) {
 				response.sendRedirect("/webapp/LoginServlet");
 				return;
 			}
-	Integer userId = (Integer)session.getAttribute("user_id");
+	Integer userId = (Integer)session.getAttribute("userId");
 
 	UserDAO uDAO = new UserDAO();
 	User user = uDAO.findByUserId(userId);
