@@ -1,9 +1,32 @@
 @charset "UTF-8";
 
+.top-decoration {
+	height: 40px;
+	background: linear-gradient(135deg, #FFB8CC, #FFD9E7); border-radius :
+	0 0 20px 20px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+	border-radius: 0 0 20px 20px;
+}
+
 /*上の説明文*/
 .charachange-info{
     text-align: center;
-    margin-top: 30px;
+}
+
+.dotted-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.dotted-side::before,
+.dotted-side::after {
+    content: "";
+    flex-grow: 1;
+    border-bottom: 3px dashed #ffb8cc; /* ピンクの点線 */
+    margin: 0 15px; /* 文字と点線の間のスキマ */
+    max-width: 50px; /* 点線の全体の長さ */
 }
 
 /*イラストの位置*/
@@ -47,6 +70,7 @@
 	border: 3px solid #ffd6e7;
 	border-radius: 20px;
 	padding: 10px 20px;
+	margin-top:10px;
 	font-size: 18px;
 	font-weight: bold;
 	color:#fff;

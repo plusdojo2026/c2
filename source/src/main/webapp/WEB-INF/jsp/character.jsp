@@ -9,7 +9,8 @@
 </head>
 <body>
 
-  <form action="${pageContext.request.contextPath}/HomeServlet"
+	<div class="top-decoration"></div>
+  	<form action="${pageContext.request.contextPath}/HomeServlet"
          	 method="get">
         	<button id="backBtn" type="submit">
             	<b>戻る</b>

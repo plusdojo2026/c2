@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<div class="top-decoration"></div>
 <form action="${pageContext.request.contextPath}/CharaServlet"
          	 method="get">
         	<button id="backBtn" type="submit">
