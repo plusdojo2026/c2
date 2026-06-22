@@ -103,17 +103,14 @@ const radarData = [
     ${radarData[4]}
 ];
 
-console.log("JSP radarData=", radarData);
 </script>
 	<form action="${pageContext.request.contextPath}/LogoutServlet"
-      method="get"
-      class="logout-form">
+		method="get" class="logout-form"
+		onsubmit="return confirm('本当にログアウトしますか？');">
 
-    <button type="submit" class="logout-btn">
-        ログアウト
-    </button>
+		<button type="submit" class="logout-btn">ログアウト</button>
 
-</form>
+	</form>
 
 	<script src="<%=request.getContextPath()%>/js/home.js"></script>
 </body>

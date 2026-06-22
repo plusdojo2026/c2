@@ -23,16 +23,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	const ctx = document.getElementById('radarChart');
 
+	const maxValue = Math.max(...radarData);
+
 	new Chart(ctx, {
 		type: 'radar',
 		data: {
-			labels: ['生活', '運動', 'お金', '趣味', '勉強'],
+			labels: [
+				`生活 (${radarData[0]})`,
+				`運動 (${radarData[1]})`,
+				`お金 (${radarData[2]})`,
+				`趣味 (${radarData[3]})`,
+				`勉強 (${radarData[4]})`
+			],
 			datasets: [{
 				label: '達成数',
 				data: radarData,
 				fill: true,
 				backgroundColor: 'rgba(255, 182, 193, 0.4)',
-				borderColor: '#ff8fb1',
+				borderColor: '#ff8fb1'
 			}]
 		},
 		options: {
@@ -40,53 +48,54 @@ window.addEventListener('DOMContentLoaded', () => {
 			scales: {
 				r: {
 					beginAtZero: true,
-					min: 0,
-					max: 5,
+					max: Math.ceil(maxValue * 1.5),
+
 					ticks: {
-						stepSize: 1
+						display: false
 					},
+
 					grid: {
-						lineWidth: 3
-					},
+						lineWidth: 1.5
+					}
 				}
 			}
 		}
 	});
-});
 
-document.querySelectorAll('.complete-btn').forEach(button => {
+	document.querySelectorAll('.complete-btn').forEach(button => {
 
-	button.addEventListener('click', () => {
+		button.addEventListener('click', () => {
 
-		const missionName = button.dataset.mission;
-		const complete = button.dataset.complete;
+			const missionName = button.dataset.mission;
+			const complete = button.dataset.complete;
 
-		fetch('CompleteServlet', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			body:
-				'missionName=' +
-				encodeURIComponent(missionName) +
-				'&complete=' +
-				complete
-		})
-			.then(response => response.text())
-			.then(result => {
+			fetch('CompleteServlet', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				body:
+					'missionName=' +
+					encodeURIComponent(missionName) +
+					'&complete=' +
+					complete
+			})
+				.then(response => response.text())
+				.then(result => {
 
-				if (result === 'success') {
+					if (result === 'success') {
 
-					const row = button.closest('.mission-row');
+						const row = button.closest('.mission-row');
 
-					row.querySelectorAll('.complete-btn')
-						.forEach(btn =>
-							btn.classList.remove('active')
-						);
+						row.querySelectorAll('.complete-btn')
+							.forEach(btn =>
+								btn.classList.remove('active')
+							);
 
-					button.classList.add('active');
-				}
-			});
+						button.classList.add('active');
+					}
+				});
+		});
+
 	});
-
 });
