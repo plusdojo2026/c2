@@ -9,11 +9,15 @@
 <title>がんばろうあいぼう | ログイン</title>
 </head>
 <body>
-	<div class="loginsize">
+	<div class="top-decoration"></div>
+
+	<div class="login">
 		<p class="top">
 			<b>ログイン</b>
 		</p>
 
+		<div class="box-outer">
+        <div class="box-inner">
 		<form id=login action="${pageContext.request.contextPath}/LoginServlet"
 			method="post">
 
@@ -30,9 +34,12 @@
 			<button type="submit" name="login" class="submit">ログイン</button>
 			 <span style=color:red><span id="msg"></span></span>
 			</form>	
+			<br>
 		<div class="nav">
 			<a href="${pageContext.request.contextPath}/RegistServlet">
 				新規登録はこちら </a>
+		</div>
+		</div>
 		</div>
 		  
 

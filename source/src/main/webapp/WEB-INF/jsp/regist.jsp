@@ -9,11 +9,14 @@
 </head>
 <body>
 
-	<div class="loginsize">
+<div class="top-decoration"></div>
+	<div class="login">
 	 	<p class="top"><b>新規会員の登録</b></p>
 	 
-		<form action="${pageContext.request.contextPath}/RegistServlet"
-      	method="post">
+	 
+	 	<div class="box-outer">
+        <div class="box-inner">
+			<form action="${pageContext.request.contextPath}/RegistServlet" method="post">
 
     	<p>
         	<label for="id">ユーザID</label><br>
@@ -28,7 +31,7 @@
    			 <button type="submit" class="submit">新規登録</button>
 
 		</form>
-	</div>
+	</div></div></div>
 
 </body>
 </html>
