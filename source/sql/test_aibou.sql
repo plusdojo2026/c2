@@ -1,5 +1,7 @@
 
 /*変更点
+※0623時点
+  ログインidにユニークキーを付け足しました。
 ※0619時点
 キャラidを増やしました。キャラ×タイプの組み合わせを増やしました。
 ユーザテーブルのpwを小文字に変更しました。
@@ -309,7 +311,8 @@ CREATE TABLE user (
     chara_id INT DEFAULT 1,
     user_nickname VARCHAR(20) DEFAULT 'あなた',
     chara_nickname VARCHAR(20) DEFAULT '僕',
-FOREIGN KEY (chara_id) REFERENCES chara(chara_id)
+FOREIGN KEY (chara_id) REFERENCES chara(chara_id),
+UNIQUE (login_id)
 );
 
 INSERT INTO user (login_id,pw,chara_id) VALUES(
