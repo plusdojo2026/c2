@@ -58,49 +58,42 @@ public class UserDAO {
 	}
 
 	// 新規登録
-	public boolean insert(String loginId, String pw) {
+		public boolean insert(String loginId, String pw) throws Exception {
 
-		boolean result = false;
+		    boolean result = false;
+		
+		    Class.forName("com.mysql.cj.jdbc.Driver");
 
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+		    String sql = "INSERT INTO user(login_id, pw) "
+		    		+ "VALUES(?, ?)";
 
-			Connection conn =
-					DriverManager.getConnection(
-							URL,
-							USER,
-							PASS);
-
-			String sql =
-					"INSERT INTO user(login_id, PW) "
-					+ "VALUES(?, ?)";
-
-			PreparedStatement ps =
-					conn.prepareStatement(sql);
-
-			if (loginId != null) {
-				ps.setString(1, loginId);
-			} else {
-				ps.setString(1, "");
-			}
-
-			if (pw != null) {
-				ps.setString(2, pw);
-			} else {
-				ps.setString(2, "");
-			}
+		    try (
+		    		Connection conn = DriverManager.getConnection(
+		    		URL, 
+		    		USER,
+		    		PASS);
+		         PreparedStatement ps = conn.prepareStatement(sql)) {
 
 
-			result = ps.executeUpdate() > 0;
+		        if (loginId != null) {
+		            ps.setString(1, loginId);
+		        } else {
+		            ps.setString(1, "");
+		        }
 
-			conn.close();
+		        if (pw != null) {
+		            ps.setString(2, pw);
+		        } else {
+		            ps.setString(2, "");
+		        }
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		        result = ps.executeUpdate() > 0;
+		    }
+
+		    return result;
 		}
 
-		return result;
-	}
+
 
 	// user_id取得
 	public int getUserId(String loginId) {

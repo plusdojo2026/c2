@@ -38,13 +38,28 @@ import dao.UserDAO;
 
         System.out.println("ユーザID：" + id);
         System.out.println("パスワード：" + pw);
-
-        UserDAO uDao = new UserDAO();
-        uDao.insert(id, pw);
         
+     // ログインidのダブりをなくす
+        try {
+        	UserDAO uDao = new UserDAO();
         
-        // DAOで登録処理
-        response.sendRedirect(
-                request.getContextPath() +"/LoginServlet");
+	        uDao.insert(id, pw);
+	        
+	        response.sendRedirect(
+	                request.getContextPath() +"/LoginServlet");
+	        } catch (Exception e) {
+	
+	            if (e.getMessage().contains("Duplicate") ) {
+	
+	                request.setAttribute("error", "そのログインIDは既に使用されています、ログインIDを変更して新規登録をしてください。");
+	
+	                RequestDispatcher dispatcher =
+	                        request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp");
+	                dispatcher.forward(request, response);
+	                return;
+	            }
+	
+	            throw new ServletException(e);
+	        }
     }
 }

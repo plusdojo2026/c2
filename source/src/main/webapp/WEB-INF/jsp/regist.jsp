@@ -1,6 +1,7 @@
 <!-- 新規会員登録 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +30,10 @@
         	<input type="password" id="pw" name="pw">
     	</p>
 
-   			 <button type="submit" class="submit">新規登録</button>
-   			 <span style=color:red><span id="msg"></span></span>
+   			<button type="submit" class="submit">新規登録</button><br>
+   			<p style="color:red"><span id="msg"></span></p><br>
+    		<p style="color:red;">${error}</p>
+	
 
 		</form>
 	</div></div></div>
