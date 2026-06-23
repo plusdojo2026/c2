@@ -22,7 +22,7 @@
     	<p>キャラクターとあなたのあだ名を教えてね！</p><br>
     </div>
 	
-	<form action="${pageContext.request.contextPath}/NameServlet"
+	<form id=adana action="${pageContext.request.contextPath}/NameServlet"
       method="post">
 	
 	<div class="nowname">
@@ -37,9 +37,10 @@
     	<div>
         	<label>キャラの名前を入力してください</label><br>
         	<input type="text"
-               name="charaNickname"
-               value="${user.charaNickname}"
-               required id="text">
+        	class="nickname-input"
+            name="charaNickname"
+            value="${user.charaNickname}"
+            >
    		 </div>
    		 
    		 <p class="arrow">⇄</p> 
@@ -47,9 +48,10 @@
     	<div>
         	<label>あなたの呼び名を入力してください</label><br>
         	<input type="text"
-               name="userNickname"
-                value="${user.userNickname}"
-               required id="text">
+        	class="nickname-input" 
+            name="userNickname"
+            value="${user.userNickname}"
+            >
     	</div>
     </div>
 
@@ -57,10 +59,26 @@
      		<button type="submit"  id="name-submit">
         		<b>登録する</b>
      		</button>
+	     	<p>${message}</p>
+			<p style=color:red><span id="msg"></span></p>
     	</div>
+
 	</form>
 
-<p>${message}</p>
-	 
+
+
+<script>
+'use strict';
+document.getElementById('adana').onsubmit = function(event) {
+	let charaNickname = document.getElementById('adana').elements['charaNickname'].value;
+    let userNickname = document.getElementById('adana').elements['userNickname'].value;
+
+    if (charaNickname === '' || userNickname === '') {
+        document.getElementById('msg').textContent =
+            '呼び名を登録してください。';
+        event.preventDefault();
+    }
+}
+</script>
 </body>
 </html>
