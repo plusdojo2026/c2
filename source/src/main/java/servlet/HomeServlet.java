@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import dao.DailyDAO;
 import dao.HomeDAO;
 import dao.UserDAO;
+import model.User;
 
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
@@ -53,8 +54,15 @@ public class HomeServlet extends HttpServlet {
 		int charaId = userDao.getCharaId(userId);
 		int typeId = userDao.getTypeId(userId);
 
+		User user = userDao.findByUserId(userId);
+
+		String userNickname = user.getUserNickname();
+
+		String charaNickname = user.getCharaNickname();
+
 		request.setAttribute("charaId", charaId);
 		request.setAttribute("typeId", typeId);
+		request.setAttribute("charaNickname", charaNickname);
 
 		String charaImage = "default.png";
 		String charaMessage = "今日も頑張ろう！";
@@ -70,8 +78,27 @@ public class HomeServlet extends HttpServlet {
 
 			charaImage = "dog.png";
 
-			String[] dogMessages = { "ミッション達成を目指そうワン！", "今日も元気にいくワン！", "少しずつでも前進だワン！", "頑張った分だけ成長するワン！",
-					"一緒にゴールを目指そうワン！", "無理せずコツコツだワン！", "昨日の自分を超えよう！", "その調子だワン！", "今日も応援してるワン！", "まずは一つ達成してみようワン！" };
+			String[] dogMessages = {
+
+				    // ニックネームあり
+				    userNickname + "、今日も一緒に頑張るワン！",
+				    userNickname + "ならきっとできるワン！",
+				    userNickname + "、無理はしすぎないワン！",
+				    userNickname + "、応援してるワン！",
+				    userNickname + "、まずは一歩だワン！",
+				    userNickname + "、今日も元気にいくワン！",
+				    userNickname + "、その調子だワン！",
+
+				    // ニックネームなし
+				    "ミッション達成を目指そうワン！",
+				    "少しずつでも前進だワン！",
+				    "頑張った分だけ成長するワン！",
+				    "一緒にゴールを目指そうワン！",
+				    "コツコツ続けるのが大事だワン！",
+				    "焦らなくても大丈夫だワン！",
+				    "今日は何から始めるワン？",
+				    "応援してるワン！"
+				};
 
 			charaMessage = dogMessages[random.nextInt(dogMessages.length)];
 			break;
@@ -83,8 +110,27 @@ public class HomeServlet extends HttpServlet {
 
 			charaImage = "cat.png";
 
-			String[] catMessages = { "ニャー！今日も一緒に頑張るニャー！", "焦らなくて大丈夫ニャー！", "コツコツ続けるのが大事ニャー！", "まずは一つ終わらせるニャー！",
-					"きっとできるニャー！", "今日も応援してるニャー！", "少しずつ成長するニャー！", "休憩もしながら頑張るニャー！", "その調子ニャー！", "達成したら褒めてあげるニャー！" };
+			String[] catMessages = {
+
+				    // ニックネームあり
+				    userNickname + "、今日も一緒に頑張るニャー！",
+				    userNickname + "なら大丈夫ニャー！",
+				    userNickname + "、焦らなくていいニャー！",
+				    userNickname + "、ちゃんと見てるニャー！",
+				    userNickname + "、その調子ニャー！",
+				    userNickname + "、今日も応援してるニャー！",
+				    userNickname + "、無理しすぎはダメニャー！",
+
+				    // ニックネームなし
+				    "コツコツ続けるのが大事ニャー！",
+				    "まずは一つ終わらせるニャー！",
+				    "少しずつ成長するニャー！",
+				    "休憩もしながら頑張るニャー！",
+				    "今日もいい日になりそうニャー！",
+				    "できたらたくさん褒めるニャー！",
+				    "ゆっくりでも前に進んでるニャー！",
+				    "まずは気楽にやるニャー！"
+				};
 
 			charaMessage = catMessages[random.nextInt(catMessages.length)];
 			break;

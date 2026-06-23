@@ -86,10 +86,15 @@
 
 		</div>
 
-		<div class="chara-message">${charaMessage}</div>
+		<div class="chara-balloon">
+
+			<div class="chara-name">${charaNickname}</div>
+
+			<div class="chara-message">${charaMessage}</div>
+
+		</div>
 
 	</div>
-</div>
 </div>
 
 <script>
