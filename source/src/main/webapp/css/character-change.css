@@ -10,6 +10,14 @@
 
 /*上の説明文*/
 .charachange-info{
+   justify-content: center; 
+    display: flex;      
+    align-items: center; 
+    gap: 10px;  
+}
+
+/*上の説明文*/
+.charachange-info2{
     text-align: center;
 }
 
@@ -17,7 +25,6 @@
 .whole-image{
     justify-content: center;
     display: flex;
-    margin: 130px;
     gap: 200px;
 }
 
@@ -35,6 +42,14 @@
     border: none;
     
 }
+
+
+.box-outer{
+    background-color:#FFF9FA;
+    padding: 70px;
+    border-radius: 40px;
+}
+
 
 
 
@@ -61,4 +76,13 @@
 	cursor: pointer;
 	box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 	transition: 0.2s;
+}
+
+#nikukyuu1{
+	margin-left:200px;
+}
+#nikukyuu2{
+	 display: block;
+	 margin-left: auto;
+	 margin-right:200px;
 }
