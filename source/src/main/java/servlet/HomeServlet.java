@@ -39,10 +39,8 @@ public class HomeServlet extends HttpServlet {
 
 		if (missions != null) {
 			for (String m : missions) {
-				System.out.println(m);
 			}
 		} else {
-			System.out.println("missions = null");
 		}
 
 		request.setAttribute("missions", missions);
@@ -146,15 +144,36 @@ public class HomeServlet extends HttpServlet {
 			}
 		}
 
-		// 時間帯による画像変更
-		// 現在日時
+		// ミッション総達成数取得
+		HomeDAO homeDAO = new HomeDAO();
+
+		int totalCompleteCount = homeDAO.getTotalClearCount(userId);
+
+		// 背景レベル決定
+		int backgroundLevel;
+
+		if (totalCompleteCount >= 300) {
+			backgroundLevel = 5;
+		} else if (totalCompleteCount >= 150) {
+			backgroundLevel = 4;
+		} else if (totalCompleteCount >= 60) {
+			backgroundLevel = 3;
+		} else if (totalCompleteCount >= 20) {
+			backgroundLevel = 2;
+		} else {
+			backgroundLevel = 1;
+		}
+
+		request.setAttribute("backgroundLevel", backgroundLevel);
+
+		// 時間帯
 		LocalTime now = LocalTime.now();
 		int hour = now.getHour();
 
-		// 現在月
+		// 月
 		int month = LocalDate.now().getMonthValue();
 
-		// 季節判定
+		// 季節
 		String season;
 
 		if (month >= 3 && month <= 5) {
@@ -167,31 +186,23 @@ public class HomeServlet extends HttpServlet {
 			season = "winter";
 		}
 
-		// 背景画像
-		String backgroundImage;
-
 		boolean outsideType = (typeId == 1 || typeId == 3);
 		boolean daytime = (hour >= 6 && hour < 18);
 
+		// 背景画像
+		String backgroundImage;
+
 		if (outsideType) {
-
-			// 外背景
-			backgroundImage = "outside1_" + season + (daytime ? "_noon.png" : "_night.png");
-
+			backgroundImage = "outside" + backgroundLevel + "_" + season + (daytime ? "_noon.png" : "_night.png");
 		} else {
-
-			// 部屋背景
-			backgroundImage = "home1_" + season + (daytime ? "_noon.png" : "_night.png");
+			backgroundImage = "home" + backgroundLevel + "_" + season + (daytime ? "_noon.png" : "_night.png");
 		}
 
+		request.setAttribute("season", season);
 		request.setAttribute("backgroundImage", backgroundImage);
 
-		System.out.println("backgroundImage=" + backgroundImage);
 		boolean isDog = (charaId >= 1 && charaId <= 4);
 		boolean isCat = (charaId >= 5 && charaId <= 8);
-
-		System.out.println("typeId=" + typeId);
-		System.out.println("backgroundImage=" + backgroundImage);
 
 		boolean morningType = (typeId == 1 || typeId == 2);
 		boolean nightType = (typeId == 3 || typeId == 4);

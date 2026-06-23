@@ -39,23 +39,16 @@ public class HomeDAO {
 
 		return false;
 	}
-	
-	/*レーダーチャートへ表示する値を取得*/
+
+	/* レーダーチャートへ表示する値を取得 */
 
 	public int[] getRadarData(int userId) {
 
 		int[] data = new int[5];
 
-		String sql =
-			    "SELECT t.theme_name, COUNT(*) cnt "
-			  + "FROM daily_mission d "
-			  + "INNER JOIN mission m "
-			  + "ON d.mission_id = m.mission_id "
-			  + "INNER JOIN theme t "
-			  + "ON m.theme_id = t.theme_id "
-			  + "WHERE d.user_id = ? "
-			  + "AND d.complete = true "
-			  + "GROUP BY t.theme_name";
+		String sql = "SELECT t.theme_name, COUNT(*) cnt " + "FROM daily_mission d " + "INNER JOIN mission m "
+				+ "ON d.mission_id = m.mission_id " + "INNER JOIN theme t " + "ON m.theme_id = t.theme_id "
+				+ "WHERE d.user_id = ? " + "AND d.complete = true " + "GROUP BY t.theme_name";
 
 		try (Connection con = DriverManager.getConnection(URL, USER, PASS);
 				PreparedStatement ps = con.prepareStatement(sql)) {
@@ -66,37 +59,34 @@ public class HomeDAO {
 
 			while (rs.next()) {
 
-			    String theme =
-			            rs.getString("theme_name");
+				String theme = rs.getString("theme_name");
 
-			    int count =
-			            rs.getInt("cnt");
+				int count = rs.getInt("cnt");
 
-			    System.out.println(
-			        theme + ":" + count);
+				System.out.println(theme + ":" + count);
 
-			    switch(theme) {
+				switch (theme) {
 
-			    case "生活":
-			        data[0] = count;
-			        break;
+				case "生活":
+					data[0] = count;
+					break;
 
-			    case "運動":
-			        data[1] = count;
-			        break;
+				case "運動":
+					data[1] = count;
+					break;
 
-			    case "お金":
-			        data[2] = count;
-			        break;
+				case "お金":
+					data[2] = count;
+					break;
 
-			    case "趣味":
-			        data[3] = count;
-			        break;
+				case "趣味":
+					data[3] = count;
+					break;
 
-			    case "勉強":
-			        data[4] = count;
-			        break;
-			    }
+				case "勉強":
+					data[4] = count;
+					break;
+				}
 			}
 
 		} catch (Exception e) {
@@ -105,5 +95,29 @@ public class HomeDAO {
 
 		return data;
 	}
-	
+
+	public int getTotalClearCount(int userId) {
+
+		int count = 0;
+
+		String sql = "SELECT COUNT(*) cnt " + "FROM daily_mission " + "WHERE user_id = ? " + "AND complete = true";
+
+		try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+				PreparedStatement ps = con.prepareStatement(sql)) {
+
+			ps.setInt(1, userId);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return count;
+	}
+
 }

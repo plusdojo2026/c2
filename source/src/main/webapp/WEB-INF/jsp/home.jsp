@@ -55,7 +55,7 @@
 					method="post">
 
 					<button type="submit" class="image-button">
-						<img src="<%=request.getContextPath()%>/images/mission.png"
+						<img src="<%=request.getContextPath()%>/images/btn/mission.png"
 							alt="ミッション設定">
 					</button>
 
@@ -67,7 +67,7 @@
 					method="post">
 
 					<button type="submit" class="image-button">
-						<img src="<%=request.getContextPath()%>/images/calendar.png"
+						<img src="<%=request.getContextPath()%>/images/btn/calendar.png"
 							alt="頑張りの確認">
 					</button>
 
@@ -77,7 +77,7 @@
 					method="post">
 
 					<button type="submit" class="image-button">
-						<img src="<%=request.getContextPath()%>/images/character.png"
+						<img src="<%=request.getContextPath()%>/images/btn/character.png"
 							alt="キャラクター設定">
 					</button>
 
@@ -89,6 +89,7 @@
 		<div class="chara-message">${charaMessage}</div>
 
 	</div>
+</div>
 </div>
 
 <script>
@@ -110,7 +111,7 @@ const radarData = [
 </form>
 
 <body class="home-body"
-	style="background-image:url('${pageContext.request.contextPath}/images/${backgroundImage}');">
+	style="background-image:url('${pageContext.request.contextPath}/images/bg/${backgroundImage}');">
 	<script src="<%=request.getContextPath()%>/js/home.js"></script>
 </body>
 </html>
