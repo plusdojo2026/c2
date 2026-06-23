@@ -86,13 +86,17 @@
 
 		</div>
 
-		<div class="chara-balloon">
+		<div class="right-area">
 
-			<div class="chara-name">${charaNickname}</div>
 
-			<div class="chara-message">${charaMessage}</div>
+				<div class="chara-balloon">${charaNickname}</div>
+
+				<div class="chara-message">${charaMessage}</div>
+
 
 		</div>
+
+
 
 	</div>
 </div>
