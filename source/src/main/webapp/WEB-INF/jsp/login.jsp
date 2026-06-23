@@ -32,7 +32,7 @@
 					id="pw" name="pw">
 			</p>
 
-			<button type="submit" name="login" class="submit">ログイン</button>
+			<button type="submit" name="login" class="submit">ログイン</button><br>
 			 <span style=color:red><span id="msg"></span></span>
 			</form>	
 			<br>

@@ -48,6 +48,13 @@
             'ログインIDとパスワードを両方登録してください。';
         event.preventDefault();
     }
+    
+    if(pw.length<4){
+    	document.getElementById('msg').textContent =
+            'パスワードは４文字以上で登録してください。';
+        event.preventDefault();
+    }
+    
 }
 
 	</script>
