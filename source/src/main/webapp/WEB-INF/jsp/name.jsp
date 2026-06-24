@@ -54,13 +54,14 @@
             >
     	</div>
     </div>
-
+		
 		<div class="name-submit">
+			<p>${message}</p>
+			<p style=color:red><span id="msg"></span></p>
      		<button type="submit"  id="name-submit">
         		<b>登録する</b>
      		</button>
-	     	<p>${message}</p>
-			<p style=color:red><span id="msg"></span></p>
+
     	</div>
 
 	</form>

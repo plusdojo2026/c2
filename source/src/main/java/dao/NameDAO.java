@@ -24,7 +24,7 @@ public class NameDAO {
 						"root", "password");
 
 				// SQL文を準備する
-				String sql = "UPDATE User SET user_nickname=? ,chara_nickname=? WHERE user_id=?";
+				String sql = "UPDATE user SET user_nickname=? ,chara_nickname=? WHERE user_id=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -68,7 +68,7 @@ public class NameDAO {
 		            + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 		            "root", "password");
 
-		        String sql = "SELECT user_nickname, chara_nickname FROM User WHERE user_id = ?";
+		        String sql = "SELECT user_nickname, chara_nickname FROM user WHERE user_id = ?";
 		        PreparedStatement ps = conn.prepareStatement(sql);
 		        ps.setInt(1, userId);
 
