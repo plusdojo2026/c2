@@ -80,25 +80,14 @@ public class HomeServlet extends HttpServlet {
 
 			String[] dogMessages = {
 
-				    // ニックネームあり
-				    userNickname + "、今日も一緒に頑張るワン！",
-				    userNickname + "ならきっとできるワン！",
-				    userNickname + "、無理はしすぎないワン！",
-				    userNickname + "、応援してるワン！",
-				    userNickname + "、まずは一歩だワン！",
-				    userNickname + "、今日も元気にいくワン！",
-				    userNickname + "、その調子だワン！",
+					// ニックネームあり
+					userNickname + "、今日も一緒に頑張るワン！", userNickname + "ならきっとできるワン！", userNickname + "、無理はしすぎないワン！",
+					userNickname + "、応援してるワン！", userNickname + "、まずは一歩だワン！", userNickname + "、今日も元気にいくワン！",
+					userNickname + "、その調子だワン！",
 
-				    // ニックネームなし
-				    "ミッション達成を目指そうワン！",
-				    "少しずつでも前進だワン！",
-				    "頑張った分だけ成長するワン！",
-				    "一緒にゴールを目指そうワン！",
-				    "コツコツ続けるのが大事だワン！",
-				    "焦らなくても大丈夫だワン！",
-				    "今日は何から始めるワン？",
-				    "応援してるワン！"
-				};
+					// ニックネームなし
+					"ミッション達成を目指そうワン！", "少しずつでも前進だワン！", "頑張った分だけ成長するワン！", "一緒にゴールを目指そうワン！", "コツコツ続けるのが大事だワン！",
+					"焦らなくても大丈夫だワン！", "今日は何から始めるワン？", "応援してるワン！" };
 
 			charaMessage = dogMessages[random.nextInt(dogMessages.length)];
 			break;
@@ -112,25 +101,14 @@ public class HomeServlet extends HttpServlet {
 
 			String[] catMessages = {
 
-				    // ニックネームあり
-				    userNickname + "、今日も一緒に頑張るニャー！",
-				    userNickname + "なら大丈夫ニャー！",
-				    userNickname + "、焦らなくていいニャー！",
-				    userNickname + "、ちゃんと見てるニャー！",
-				    userNickname + "、その調子ニャー！",
-				    userNickname + "、今日も応援してるニャー！",
-				    userNickname + "、無理しすぎはダメニャー！",
+					// ニックネームあり
+					userNickname + "、今日も一緒に頑張るニャー！", userNickname + "なら大丈夫ニャー！", userNickname + "、焦らなくていいニャー！",
+					userNickname + "、ちゃんと見てるニャー！", userNickname + "、その調子ニャー！", userNickname + "、今日も応援してるニャー！",
+					userNickname + "、無理しすぎはダメニャー！",
 
-				    // ニックネームなし
-				    "コツコツ続けるのが大事ニャー！",
-				    "まずは一つ終わらせるニャー！",
-				    "少しずつ成長するニャー！",
-				    "休憩もしながら頑張るニャー！",
-				    "今日もいい日になりそうニャー！",
-				    "できたらたくさん褒めるニャー！",
-				    "ゆっくりでも前に進んでるニャー！",
-				    "まずは気楽にやるニャー！"
-				};
+					// ニックネームなし
+					"コツコツ続けるのが大事ニャー！", "まずは一つ終わらせるニャー！", "少しずつ成長するニャー！", "休憩もしながら頑張るニャー！", "今日もいい日になりそうニャー！",
+					"できたらたくさん褒めるニャー！", "ゆっくりでも前に進んでるニャー！", "まずは気楽にやるニャー！" };
 
 			charaMessage = catMessages[random.nextInt(catMessages.length)];
 			break;
@@ -303,6 +281,15 @@ public class HomeServlet extends HttpServlet {
 					charaMessage = "ぽかぽかニャー！";
 				}
 
+			} else if (hour >= 23 || hour < 7) {
+
+				if (isDog) {
+					charaImage = "dog_sleep.png";
+					charaMessage = "すやすや眠ってるワン...";
+				} else if (isCat) {
+					charaImage = "cat_sleep.png";
+					charaMessage = "ぐっすりおやすみニャー...";
+				}
 			}
 
 		}
@@ -356,6 +343,15 @@ public class HomeServlet extends HttpServlet {
 					charaMessage = "ぽかぽかニャー！";
 				}
 
+			} else if (hour >= 15 && hour < 23) {
+
+				if (isDog) {
+					charaImage = "dog_sleep.png";
+					charaMessage = "むにゃむにゃ...眠いワン...";
+				} else if (isCat) {
+					charaImage = "cat_sleep.png";
+					charaMessage = "お昼寝中ニャー...";
+				}
 			}
 
 		}
