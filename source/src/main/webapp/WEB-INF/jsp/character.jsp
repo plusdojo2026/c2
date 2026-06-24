@@ -39,8 +39,8 @@
    		 </div>
         
     	<div class="Button"> 
-    		<form action="${pageContext.request.contextPath}/NameServlet"
-         	 method="get">
+    		<form action="${pageContext.request.contextPath}/NameTransitionServlet"
+         	 method="post">
         	<button id="nameBtn" type="submit">
             	<b>呼び方の設定</b>
         	</button></form>

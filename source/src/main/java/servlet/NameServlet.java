@@ -38,6 +38,7 @@ public class NameServlet extends HttpServlet {
 
 		// ログイン中のユーザIDを取得
 		Integer userId = (Integer) session.getAttribute("userId");
+		System.out.println("【doGet】userId = " + userId);
 
 		// DBから現在の呼び名を取得する
 		NameDAO nDao = new NameDAO();
@@ -70,7 +71,7 @@ public class NameServlet extends HttpServlet {
 		int userId = (Integer) session.getAttribute("userId");
 		String userNickname = request.getParameter("userNickname");
 		String charaNickname = request.getParameter("charaNickname");
-
+		System.out.println("【doPost】userId = " + userId);
 		// 更新処理を行う
 		NameDAO nDao = new NameDAO();
 		boolean isSuccess = nDao.update(new UserDto(userId, userNickname, charaNickname));

@@ -78,6 +78,11 @@ document.getElementById('adana').onsubmit = function(event) {
             '呼び名を登録してください。';
         event.preventDefault();
     }
+    if(charaNickname.length>20||userNickname.length>20){
+    	document.getElementById('msg').textContent =
+            '呼び名は２０文字以内で設定してください。';
+        event.preventDefault();
+    }
 }
 </script>
 </body>

@@ -54,6 +54,11 @@
             'パスワードは４文字以上で登録してください。';
         event.preventDefault();
     }
+    if(pw.length>50||id.length>50){
+    	document.getElementById('msg').textContent =
+            'idとパスワードは５０文字以内で登録してください。';
+        event.preventDefault();
+    }
     
 }
 

@@ -33,7 +33,7 @@
 			</p>
 
 			<button type="submit" name="login" class="submit">ログイン</button><br>
-			 <span style=color:red><span id="msg"></span></span>
+			 <p style=color:red><span id="msg"></span></p>
 			</form>	
 			<br>
 		<div class="nav">
@@ -59,7 +59,7 @@
     }
 }
 	</script>
-	<!-- JavaScript（ここまで） -->
+
 
 </body>
 </html>
