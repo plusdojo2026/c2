@@ -17,18 +17,23 @@
         	</button></form>
 
 	<div class="name-info">
-    	
+    	<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40">
     	<h1>名前の変更</h1>
-    	<p>キャラクターとあなたのあだ名を教えてね！</p><br>
+    	<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40">
     </div>
+    <p class=name-info2>キャラクターとあなたのあだ名を教えてね！</p><br>
 	
 	<form id=adana action="${pageContext.request.contextPath}/NameServlet"
       method="post">
 	
+	<div class=nowname-outer>
+	<img src="<%=request.getContextPath()%>/images/dog_name.png"width="300" id=dog_name>
 	<div class="nowname">
          <h3>現在のニックネーム</h3>
 		 <p>キャラ：${user.charaNickname}</p>
 		 <p>あなた：${user.userNickname}</p>
+	</div>
+	<img src="<%=request.getContextPath()%>/images/cat_name.png"width="300">
 	</div>
 	
 	

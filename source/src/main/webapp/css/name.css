@@ -10,6 +10,14 @@
 
 /*上の説明文*/
 .name-info{
+    justify-content: center; 
+    display: flex;      
+    align-items: center; 
+    gap: 10px;  
+}
+
+/*上の説明文*/
+.name-info2{
     text-align: center;
 }
 
@@ -20,8 +28,14 @@
     width: 400px;
     height: 150px;
     border-radius: 30px;
-    text-align: center;
-    margin: 0 auto;
+    text-align:center;
+}
+
+.nowname-outer{
+	justify-content: center; 
+    display: flex;      
+    align-items: center; 
+    gap: 10px; 
 }
 
 /*入力欄*/
@@ -31,6 +45,7 @@
     width: 300px;    
     height: 40px;   
     border-radius: 30px;
+   	border:3px solid #ffb8cc;
 }
 
 /*２つの入力欄と矢印の位置*/
@@ -39,6 +54,10 @@
     display: flex;
     margin-bottom: 10px;
     gap: 100px;
+}
+
+#dog_name{
+	transform: scaleX(-1);
 }
 
 /*送信ボタン*/
@@ -57,6 +76,7 @@
 /*送信ボタン真ん中に*/
 .name-submit{
     text-align: center;
+    margin-bottom:20px;
 }
 
 /*ボタン　触ると動く設定*/

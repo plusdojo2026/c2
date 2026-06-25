@@ -32,27 +32,30 @@
 			method="post">
 
 			<button class="type-button1" type="submit" name="typeId" value="1">
-				朝型晴れ</button>
+				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<b>朝型 ✕ 晴れ</b><br><br><br>
+				7時起床、23時就寝に近い生活の方が外出する日
+				</button>
 
 			<button class="type-button2" type="submit" name="typeId" value="2">
-				朝型曇り</button>
+				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<b>朝型 ✕ 曇り</b><br><br><br>
+				7時起床、23時就寝に近い生活の方が家にいる日</button>
 
 			<button class="type-button3" type="submit" name="typeId" value="3">
-				夜型晴れ</button>
+				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<b>夜型 ✕ 晴れ</b><br><br><br>
+				23時起床、15時就寝に<br>近い生活の方が外出する日</button>
 
 			<button class="type-button4" type="submit" name="typeId" value="4">
-				夜型曇り</button>
+				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<b>夜型 ✕ 曇り</b><br><br><br>
+				23時起床、15時就寝に<br>近い生活の方が家にいる日</button>
 
 		</form>
 	</div>
 
-	<div class="type-info2">
-		<h3>[それぞれのタイプ説明]</h3>
-		<p>朝型晴れ：7時起床、23時就寝に近い生活の方が外出する日</p>
-		<p>朝型曇り：7時起床、23時就寝に近い生活の方が家にいる日</p>
-		<p>夜型晴れ：23時起床、15時就寝に近い生活の方が外出する日</p>
-		<p>夜型曇り：23時起床、15時就寝に近い生活の方が家にいる日</p>
-	</div>
+	
 
 </body>
 </html>
