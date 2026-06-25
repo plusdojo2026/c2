@@ -350,7 +350,7 @@ public class HomeServlet extends HttpServlet {
 					charaMessage = "むにゃむにゃ...眠いワン...";
 				} else if (isCat) {
 					charaImage = "cat_sleep.png";
-					charaMessage = "お昼寝中ニャー...";
+					charaMessage = "ニャー...zzz";
 				}
 			}
 

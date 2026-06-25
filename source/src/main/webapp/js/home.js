@@ -99,3 +99,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	});
 });
+
+const helpBtn = document.getElementById("helpBtn");
+const modal = document.getElementById("helpModal");
+const closeBtn = document.querySelector(".close-btn");
+
+helpBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+});
+
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    }
+});

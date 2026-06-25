@@ -16,29 +16,88 @@
 		<canvas id="radarChart" width="400" height="350"></canvas>
 	</div>
 
-	<div class="mission-area">
-		<h1>今日のミッション</h1>
+	<div class="mission-wrapper">
 
-		<c:forEach var="mission" items="${missions}" varStatus="st">
-			<c:if test="${mission != null}">
-				<div class="mission-row">
+		<div class="mission-area">
+			<h1>今日のミッション</h1>
 
-					<p>${mission}</p>
+			<c:forEach var="mission" items="${missions}" varStatus="st">
+				<c:if test="${mission != null}">
+					<div class="mission-row">
+						<p>${mission}</p>
 
-					<button type="button"
-						class="complete-btn ${completes[st.index] == 1 ? 'active' : ''}"
-						data-mission="${mission}" data-complete="1">できた</button>
+						<button type="button"
+							class="complete-btn ${completes[st.index] == 1 ? 'active' : ''}"
+							data-mission="${mission}" data-complete="1">できた</button>
 
-					<button type="button"
-						class="complete-btn ${completes[st.index] == 0 ? 'active' : ''}"
-						data-mission="${mission}" data-complete="0">できなかった</button>
+						<button type="button"
+							class="complete-btn ${completes[st.index] == 0 ? 'active' : ''}"
+							data-mission="${mission}" data-complete="0">できなかった</button>
+					</div>
+				</c:if>
+			</c:forEach>
+		</div>
 
-				</div>
-			</c:if>
-		</c:forEach>
+		<!-- ミッションエリア右側のヘルプアイコン -->
+		<span class="help-icon" id="helpBtn">ⓘ</span>
 
 	</div>
 
+	<!-- ポップアップ -->
+	<div id="helpModal" class="modal">
+		<div class="modal-content">
+
+			<span class="close-btn">&times;</span>
+
+			<h2>利用方法</h2>
+			<div class="help-item">
+				<img src="images/help_screen.png" alt="画面遷移">
+
+				<div>
+					<h3>画面遷移</h3>
+					<p>各ボタンを押すことで、それぞれの画面へ移動できます。</p>
+					<ul>
+						<li>ミッション設定ボタン → ミッション設定画面</li>
+						<li>頑張りの確認ボタン → 頑張りの確認画面</li>
+						<li>キャラクター設定ボタン → キャラクター設定画面</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="help-item">
+				<img src="images/help_mission.png" alt="ミッション">
+				<div>
+					<h3>ミッション達成</h3>
+					<p>ミッションを達成したら「できた」を押してください。</p>
+				</div>
+			</div>
+
+			<div class="help-item">
+				<img src="images/help_chart.png" alt="レーダーチャート">
+				<div>
+					<h3>レーダーチャート</h3>
+					<p>実績に応じて能力値が変化します。</p>
+				</div>
+			</div>
+
+			<div class="help-item">
+				<img src="images/help_season.jpeg" alt="季節背景">
+				<div>
+					<h3>部屋・旅行先の変化</h3>
+					<p>ミッションを達成していくと、 キャラクターが住む部屋や旅行先が変化します。</p>
+				</div>
+			</div>
+
+			<div class="help-item">
+				<img src="images/help_outside.jpeg" alt="旅行背景">
+				<div>
+					<h3>景色の変化</h3>
+					<p>春・夏・秋・冬と昼と夜で背景も変化するため、 季節の移り変わりも楽しめます。</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
 
 <div class="character-area">
@@ -89,9 +148,9 @@
 		<div class="right-area">
 
 
-				<div class="chara-balloon">${charaNickname}</div>
+			<div class="chara-balloon">${charaNickname}</div>
 
-				<div class="chara-message">${charaMessage}</div>
+			<div class="chara-message">${charaMessage}</div>
 
 
 		</div>
