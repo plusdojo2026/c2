@@ -32,23 +32,23 @@
 			method="post">
 
 			<button class="type-button1" type="submit" name="typeId" value="1">
-				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<img src="${pageContext.request.contextPath}/images/dog_sun.png"  width="100"><br>
 				<b>朝型 ✕ 晴れ</b><br><br><br>
 				7時起床、23時就寝に近い生活の方が外出する日
 				</button>
 
 			<button class="type-button2" type="submit" name="typeId" value="2">
-				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<img src="${pageContext.request.contextPath}/images/cat_cloudy.png"  width="100"><br>
 				<b>朝型 ✕ 曇り</b><br><br><br>
 				7時起床、23時就寝に近い生活の方が家にいる日</button>
 
 			<button class="type-button3" type="submit" name="typeId" value="3">
-				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<img src="${pageContext.request.contextPath}/images/dog_sun.png"  width="100"><br>
 				<b>夜型 ✕ 晴れ</b><br><br><br>
 				23時起床、15時就寝に<br>近い生活の方が外出する日</button>
 
 			<button class="type-button4" type="submit" name="typeId" value="4">
-				<img src="${pageContext.request.contextPath}/images/nikukyu_pink.png"  width="40"><br>
+				<img src="${pageContext.request.contextPath}/images/cat_cloudy.png"  width="100"><br>
 				<b>夜型 ✕ 曇り</b><br><br><br>
 				23時起床、15時就寝に<br>近い生活の方が家にいる日</button>
 
