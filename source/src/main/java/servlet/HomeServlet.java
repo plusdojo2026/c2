@@ -76,7 +76,9 @@ public class HomeServlet extends HttpServlet {
 		case 3:
 		case 4:
 
-			charaImage = "dog.png";
+			String[] dogImages = { "dog.png", "dog2.png", "dog3.png", "dog4.png" };
+
+			charaImage = dogImages[random.nextInt(dogImages.length)];
 
 			String[] dogMessages = {
 
@@ -97,7 +99,9 @@ public class HomeServlet extends HttpServlet {
 		case 7:
 		case 8:
 
-			charaImage = "cat.png";
+			String[] catImages = { "cat.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png" };
+
+			charaImage = catImages[random.nextInt(catImages.length)];
 
 			String[] catMessages = {
 
@@ -234,8 +238,25 @@ public class HomeServlet extends HttpServlet {
 		// 朝型（type 1,2）
 		if (morningType) {
 
+			if (hour == 7) {
+
+				String[] messages = { "おはよう！今日も頑張るワン！", "朝だワン！元気いっぱい！", "ぐっすり眠れたワン！", "新しい一日の始まりだワン！",
+						"おはよう！一緒に頑張ろうワン！" };
+
+				if (isDog) {
+					charaImage = "dog.png";
+					charaMessage = messages[random.nextInt(messages.length)];
+				}
+
+				String[] catMessages = { "おはようニャー！", "朝の日差しが気持ちいいニャー", "今日も一日よろしくニャー", "よく眠れたニャー", "朝ご飯が楽しみニャー" };
+
+				if (isCat) {
+					charaImage = "cat.png";
+					charaMessage = catMessages[random.nextInt(catMessages.length)];
+				}
+			}
 			// 朝ご飯（8時）
-			if (hour == 8) {
+			else if (hour == 8) {
 
 				if (isDog) {
 					charaImage = "dog_morning.png";
@@ -281,6 +302,22 @@ public class HomeServlet extends HttpServlet {
 					charaMessage = "ぽかぽかニャー！";
 				}
 
+			} else if (hour == 22) {
+
+				String[] messages = { "もう少しで寝る時間だワン", "歯磨きをしてくるワン！", "そろそろお布団に入るワン", "今日も一日お疲れさまだワン", "寝る準備をしているワン！" };
+
+				if (isDog) {
+					charaImage = "dog.png";
+					charaMessage = messages[random.nextInt(messages.length)];
+				}
+
+				String[] catMessages = { "そろそろ眠くなってきたニャー", "お布団が呼んでるニャー", "寝る前にのんびりするニャー", "今日もお疲れさまニャー",
+						"もう少しでおやすみニャー" };
+
+				if (isCat) {
+					charaImage = "cat.png";
+					charaMessage = catMessages[random.nextInt(catMessages.length)];
+				}
 			} else if (hour >= 23 || hour < 7) {
 
 				if (isDog) {
@@ -296,8 +333,24 @@ public class HomeServlet extends HttpServlet {
 		// 夜型（type 3,4）
 		else if (nightType) {
 
+			if (hour == 23) {
+
+				String[] messages = { "おはようだワン！", "これから活動開始だワン！", "よく眠れたワン！", "夜の時間が始まるワン！", "今日も頑張るワン！" };
+
+				if (isDog) {
+					charaImage = "dog.png";
+					charaMessage = messages[random.nextInt(messages.length)];
+				}
+
+				String[] catMessages = { "おはようニャー！", "夜の始まりニャー！", "元気いっぱいニャー！", "よく眠れたニャー", "これから活動するニャー" };
+
+				if (isCat) {
+					charaImage = "cat.png";
+					charaMessage = catMessages[random.nextInt(catMessages.length)];
+				}
+			}
 			// 晩ご飯（0時）
-			if (hour == 0) {
+			else if (hour == 0) {
 
 				if (isDog) {
 					charaImage = "dog_dinner.png";
@@ -343,6 +396,21 @@ public class HomeServlet extends HttpServlet {
 					charaMessage = "ぽかぽかニャー！";
 				}
 
+			} else if (hour == 14) {
+
+				String[] messages = { "そろそろ寝る時間だワン", "お昼だけどおやすみだワン", "寝る準備をしているワン", "今日も頑張ったワン！", "お布団に向かうワン" };
+
+				if (isDog) {
+					charaImage = "dog.png";
+					charaMessage = messages[random.nextInt(messages.length)];
+				}
+
+				String[] catMessages = { "もう少しで寝るニャー", "お昼寝じゃなく本気寝ニャー", "眠くなってきたニャー", "お布団に行くニャー", "おやすみニャー" };
+
+				if (isCat) {
+					charaImage = "cat.png";
+					charaMessage = catMessages[random.nextInt(catMessages.length)];
+				}
 			} else if (hour >= 15 && hour < 23) {
 
 				if (isDog) {
